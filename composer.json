@@ -7,14 +7,19 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/doctrine-migrations-bundle": "^3.3",
+        "easycorp/easyadmin-bundle": "^4.10",
+        "swiftmailer/swiftmailer": "^5.4",
+        "symfony/brevo-mailer": "7.1.*",
         "symfony/console": "7.1.*",
         "symfony/dotenv": "7.1.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "7.1.*",
+        "symfony/http-client": "7.1.*",
+        "symfony/mailer": "7.1.*",
         "symfony/runtime": "7.1.*",
+        "symfony/ux-turbo": "^2.18",
         "symfony/yaml": "7.1.*"
-    },
-    "require-dev": {
     },
     "config": {
         "allow-plugins": {
@@ -64,5 +69,8 @@
             "allow-contrib": false,
             "require": "7.1.*"
         }
+    },
+    "require-dev": {
+        "symfony/maker-bundle": "^1.60"
     }
 }

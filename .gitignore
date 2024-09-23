@@ -1,10 +1,47 @@
+# Fichiers d'environnement
+.env
+.env.local
+.env.test
+.env.test.local
 
-###> symfony/framework-bundle ###
-/.env.local
-/.env.local.php
-/.env.*.local
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
+# Répertoires de cache et de logs
 /var/
+/var/cache/
+/var/log/
+/var/sessions/
+
+# Dossiers de dépendances
 /vendor/
-###< symfony/framework-bundle ###
+/node_modules/
+
+# Fichiers générés par le build
+/public/build/
+/public/css/themes.css
+
+# Configuration des packages
+/config/packages/*.local.yaml
+
+# Fichiers de configuration
+composer.lock
+package-lock.json
+package.json
+*.yaml
+*.yml
+
+# Dossiers de migrations et de données
+/migrations/*.sql
+/migrations/*.php
+
+# Fichiers de tests
+/tests/bootstrap.php
+/bin/phpunit
+
+# Ignorer les fichiers temporaires
+.DS_Store
+Thumbs.db
+
+# Fichiers spécifiques à IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
