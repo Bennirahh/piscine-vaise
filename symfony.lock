@@ -26,6 +26,7 @@
             "migrations/.gitignore"
         ]
     },
+<<<<<<< HEAD
     "easycorp/easyadmin-bundle": {
         "version": "4.12",
         "recipe": {
@@ -35,6 +36,8 @@
             "ref": "b131e6cbfe1b898a508987851963fff485986285"
         }
     },
+=======
+>>>>>>> origin/main
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -257,6 +260,7 @@
             "templates/base.html.twig"
         ]
     },
+<<<<<<< HEAD
     "symfony/uid": {
         "version": "7.1",
         "recipe": {
@@ -266,6 +270,8 @@
             "ref": "0df5844274d871b37fc3816c57a768ffc60a43a5"
         }
     },
+=======
+>>>>>>> origin/main
     "symfony/ux-turbo": {
         "version": "v2.19.3"
     },
@@ -294,6 +300,7 @@
             "config/routes/web_profiler.yaml"
         ]
     },
+<<<<<<< HEAD
     "symfony/webpack-encore-bundle": {
         "version": "2.1",
         "recipe": {
@@ -310,6 +317,8 @@
             "webpack.config.js"
         ]
     },
+=======
+>>>>>>> origin/main
     "twig/extra-bundle": {
         "version": "v3.13.0"
     }
