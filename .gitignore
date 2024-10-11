@@ -19,7 +19,6 @@
 /public/css/themes.css
 
 # Fichiers de configuration Webpack et paquets
-/webpack.config.js
 /yarn.lock
 /package-lock.json
 
