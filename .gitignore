@@ -16,7 +16,7 @@
 
 # Fichiers générés par le build
 /public/build/
-/public/css/themes.css
+/public/css/theme.css
 
 # Fichiers de configuration Webpack et paquets
 /yarn.lock

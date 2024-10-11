@@ -6,8 +6,9 @@
     <title>flowbite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
 </head>
-<body>
+{% block body %}
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
@@ -417,8 +418,9 @@
       </div>
     </div>
   </div>
+  <p class="test">Test<p>
 </section>
-
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-</body>
+    <script src="{{ asset('js/theme.js') }}"></script>
+{% endblock %}
 </html>
