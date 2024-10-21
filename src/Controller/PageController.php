@@ -13,4 +13,10 @@ class PageController extends AbstractController
     {
         return $this->render('login.html.twig');
     }
+
+    #[Route('/profil', name: 'profil')]
+    public function profil(): Response
+    {
+        return $this->render('profil.html.twig');
+    }
 }
