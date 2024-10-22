@@ -13,4 +13,10 @@ class PageController extends AbstractController
     {
         return $this->render('login.html.twig');
     }
+
+    #[Route('/register', name: 'register')]
+    public function register(): Response
+    {
+        return $this->render('register.html.twig');
+    }
 }

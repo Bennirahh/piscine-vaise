@@ -1,0 +1,137 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(../fonts/Inter-VariableFont_opsz\,wght.ttf);
+}
+
+
+
+body {
+    background-image: url('../img/background1.jpg');
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
+
+.page-register {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.register-navbar {
+    text-align: center;
+    font-family: Inter;
+}
+
+.register-navbar li {
+    display: inline-block;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    vertical-align: middle;
+}
+
+.register-centre {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+.register-titre {
+    color: white;
+    margin: 0;
+}
+
+.register-titre-bloc {
+    margin-top: 20%;
+    padding-right: 10%;
+}
+
+.register-titre1 {
+    font-size: 20px;
+}
+
+.register-titre2 {
+    font-size: 85px;
+    font-weight: bolder;
+}
+
+.register-texte {
+    font-family: Inter;
+}
+
+.register-formulaire {
+    background-color: #E9EDDB;
+    padding: 10%;
+    margin: 5%;
+    border-radius: 8px;
+    height:75%;
+}
+
+.register-label {
+    color: #4C5214;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.register-form-titre {
+    color: #4C5214;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.register-input {
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: #B6BAAC;
+    background-color: #E9EDDB;
+    width: 95%;
+    border-style: solid;
+    padding: 2%;
+}
+
+.register-input-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 10%;
+}
+
+.register-input-case{
+    margin: 0%;
+}
+
+.register-input-case2{
+    margin-left: 5%;
+}
+
+.register-submit {
+    margin-top: 2.5%;
+    background-color: #828F23;
+    border-radius: 5px;
+    border-width: 0;
+    color: white;
+    padding: 2%;
+}
+
+.register-barre {
+    background-color: #4C5214;
+    height: 2px;
+    margin-top: 5%;
+}
+
+.register-form-footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+
+.register-form-footer-logo {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.register-form-footer-logo img {
+    margin-left: 5%;
+    margin-top: 65%;
+}
