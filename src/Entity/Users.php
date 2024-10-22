@@ -9,7 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
-class Users
+class  Users
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -49,10 +49,17 @@ class Users
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'users')]
     private Collection $reservation;
 
+    /**
+     * @var Collection<int, Event>
+     */
+    #[ORM\OneToMany(targetEntity: Event::class, mappedBy: 'users')]
+    private Collection $events;
+
     public function __construct()
     {
         $this->roles = new ArrayCollection();
         $this->reservation = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -195,6 +202,36 @@ class Users
             // set the owning side to null (unless already changed)
             if ($reservation->getUsers() === $this) {
                 $reservation->setUsers(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Event>
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): static
+    {
+        if (!$this->events->contains($event)) {
+            $this->events->add($event);
+            $event->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): static
+    {
+        if ($this->events->removeElement($event)) {
+            // set the owning side to null (unless already changed)
+            if ($event->getUsers() === $this) {
+                $event->setUsers(null);
             }
         }
 

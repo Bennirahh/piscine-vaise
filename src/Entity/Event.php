@@ -40,6 +40,9 @@ class Event
     #[ORM\ManyToMany(targetEntity: Location::class, inversedBy: 'events')]
     private Collection $location;
 
+    #[ORM\ManyToOne(inversedBy: 'events')]
+    private ?Users $users = null;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
@@ -149,6 +152,18 @@ class Event
     public function removeLocation(Location $location): static
     {
         $this->location->removeElement($location);
+
+        return $this;
+    }
+
+    public function getUsers(): ?Users
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?Users $users): static
+    {
+        $this->users = $users;
 
         return $this;
     }
