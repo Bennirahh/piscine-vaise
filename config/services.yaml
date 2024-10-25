@@ -4,12 +4,6 @@ parameters:
 
 services:
     # Configuration du DataSubscriber avec injection du service DataService
-    App\EventSubscriber\DataSubscriber:
-        arguments:
-            $dataService: '@App\Service\DataService'
-        tags:
-            - { name: 'kernel.event_subscriber' }
-
     # Configuration pour les services automatiques
     _defaults:
         autowire: true      # Injection automatique des dépendances

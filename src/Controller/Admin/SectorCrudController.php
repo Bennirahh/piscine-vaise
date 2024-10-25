@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Sector;
+use App\Entity\Users;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -15,14 +17,15 @@ class SectorCrudController extends AbstractCrudController
         return Sector::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        yield AssociationField::new('users')
+        ->setLabel('Utilisateur')
+        ->setRequired(true)
+        ->setFormTypeOption('choice_label', 'UserFirstname'); 
+
+        yield TextField::new('sectorName','Specialité');
     }
-    */
+    
 }

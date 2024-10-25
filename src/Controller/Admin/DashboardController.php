@@ -12,6 +12,7 @@ use App\Entity\Reservation;
 use App\Entity\Equipement;
 use App\Entity\Sector;
 use App\Entity\Event;
+use App\Entity\Location;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -34,8 +35,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', Users::class);
         yield MenuItem::linkToCrud('Réservations', 'fas fa-calendar', Reservation::class);
         yield MenuItem::linkToCrud('Équipements', 'fas fa-tools', Equipement::class);
-        yield MenuItem::linkToCrud('Cours', 'fas fa-chalkboard-teacher', Sector::class);
+        yield MenuItem::linkToCrud('Specialité du professeurs', 'fas fa-chalkboard-teacher', Sector::class);
         yield MenuItem::linkToCrud('Événements', 'fas fa-calendar-alt', Event::class);
+        yield MenuItem::linkToCrud('Lieu', 'fas fa-calendar-alt', Location::class);
         
     }
 }
