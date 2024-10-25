@@ -19,4 +19,10 @@ class PageController extends AbstractController
     {
         return $this->render('profil.html.twig');
     }
+
+    #[Route('/reservation', name: 'reservation')]
+    public function reservation(): Response
+    {
+        return $this->render('reservation.html.twig');
+    }
 }
