@@ -25,4 +25,10 @@ class PageController extends AbstractController
     {
         return $this->render('profiledit.html.twig');
     }
+
+    #[Route('/probleme', name: 'probleme')]
+    public function probleme(): Response
+    {
+        return $this->render('probleme.html.twig');
+    }
 }
