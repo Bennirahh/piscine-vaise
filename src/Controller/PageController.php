@@ -25,4 +25,10 @@ class PageController extends AbstractController
     {
         return $this->render('billetterie.html.twig');
     }
+
+    #[Route('/accueil', name: 'accueil')]
+    public function accueil(): Response
+    {
+        return $this->render('accueil.html.twig');
+    }
 }

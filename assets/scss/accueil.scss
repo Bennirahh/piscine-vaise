@@ -1,0 +1,172 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(../fonts/Inter-VariableFont_opsz\,wght.ttf);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
+
+.page-accueil {
+    background-color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+}
+
+.accueil-navbar {
+    text-align: center;
+    font-family: Inter;
+}
+
+.accueil-navbar li {
+    display: inline-block;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    vertical-align: middle;
+}
+
+.accueil-titre-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.accueil-titre-top img {
+    width: 100%;
+}
+
+.accueil-titre-center {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    background-image: url("../img/accueil-titre-background.png");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    height: 500px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.accueil-titre-center h1 {
+    text-align: left;
+    font-size: 60px;
+    font-weight: bolder;
+    padding-left: 40%;
+    padding-right: 40%;
+}
+
+.accueil-titre-center-texte {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: left;
+}
+
+.accueil-titre-case {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.accueil-titre-case p {
+    margin-bottom: 15%;
+}
+
+.accueil-titre-case a {
+    text-decoration: none;
+    color: white;
+    background-color: #828F23;
+    padding: 2%;
+    border-radius: 5px;
+}
+
+.accueil-titre1 {
+    font-size: 80px;
+    font-weight: bolder;
+}
+
+.presentation {
+    margin-top: 5%;
+}
+
+.presentation-case {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 10%;
+}
+
+.accueil-presentation-images1 {
+    text-align: center;
+    width: 100%;
+}
+
+.accueil-presentation-images1 img {
+    width: 50%;
+    border-radius: 40px;
+}
+
+.accueil-presentation-images2 {
+    text-align: center;
+    width: 100%;
+}
+
+.accueil-presentation-images2 img {
+    width: 40%;
+    border-radius: 40px;
+}
+
+.accueil-presentation-images3 {
+    text-align: center;
+    width: 100%;
+}
+
+.accueil-presentation-images3 img {
+    width: 35%;
+    border-radius: 40px;
+}
+
+.accueil-presentation-images4 {
+    text-align: center;
+    width: 100%;
+}
+
+.accueil-presentation-images4 img {
+    width: 60%;
+    border-radius: 40px;
+}
+
+.accueil-evennements {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+
+.accueil-evennements-cases-titre H2{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+.accueil-evennements-cases{
+    border-color: #B6BAAC;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 8%;
+}
+
+.accueil-evennements-cases-date{
+    font-size: 14px;
+}
+
+.accueil-evennements-cases-nom{
+    font-size: 30px;
+}
+
+.accueil-evennements-cases-description{
+    font-size: 14px;
+    color: #B6BAAC;
+}
