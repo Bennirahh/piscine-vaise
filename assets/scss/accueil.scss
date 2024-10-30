@@ -42,6 +42,10 @@ body {
     width: 100%;
 }
 
+.accueil-titre {
+    margin-top: 5%;
+}
+
 .accueil-titre-center {
     display: grid;
     place-items: center;
@@ -70,7 +74,7 @@ body {
 
 .accueil-titre-case {
     margin-left: 20%;
-    margin-right: 20%;
+    margin-right: 15%;
 }
 
 .accueil-titre-case p {
@@ -106,6 +110,7 @@ body {
 }
 
 .accueil-presentation-images1 img {
+    margin: auto;
     width: 50%;
     border-radius: 40px;
 }
@@ -116,6 +121,7 @@ body {
 }
 
 .accueil-presentation-images2 img {
+    margin: auto;
     width: 40%;
     border-radius: 40px;
 }
@@ -126,6 +132,7 @@ body {
 }
 
 .accueil-presentation-images3 img {
+    margin: auto;
     width: 35%;
     border-radius: 40px;
 }
@@ -136,6 +143,7 @@ body {
 }
 
 .accueil-presentation-images4 img {
+    margin: auto;
     width: 60%;
     border-radius: 40px;
 }
@@ -145,28 +153,78 @@ body {
     grid-template-columns: 2fr 3fr;
 }
 
-.accueil-evennements-cases-titre H2{
+.accueil-evennements-cases-titre H2 {
     font-size: 40px;
     font-weight: bold;
 }
 
 
-.accueil-evennements-cases{
+.accueil-evennements-cases {
     border-color: #B6BAAC;
     border-width: 2px;
     border-radius: 5px;
     padding: 8%;
 }
 
-.accueil-evennements-cases-date{
+.accueil-evennements-cases-date {
     font-size: 14px;
 }
 
-.accueil-evennements-cases-nom{
+.accueil-evennements-cases-nom {
     font-size: 30px;
 }
 
-.accueil-evennements-cases-description{
+.accueil-evennements-cases-description {
     font-size: 14px;
     color: #B6BAAC;
+}
+
+.accueil-infos {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-top: 10%;
+}
+
+.accueil-contact {
+    text-align: center;
+}
+
+.accueil-contact H1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.accueil-form-contact {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10%;
+}
+
+.accueil-contact-input {
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: #B6BAAC;
+    background-color: #F9F1FB;
+    padding: 2%;
+}
+
+.accueil-contact-form2 {
+    margin-top: 10%;
+}
+
+.accueil-infos-cases {
+    margin-left: 10%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    text-align: center;
+}
+
+
+.accueil-infos-case img {
+    margin: auto;
+    border-width: 2px;
+    border-color: #B6BAAC;
+    border-radius: 8px;
+    padding: 2%;
 }
