@@ -7,10 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
-class Users implements UserInterface
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -24,7 +27,7 @@ class Users implements UserInterface
     private ?string $UserFirstname = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $UserEmail = null;
+    private ?string $email = null;
 
     #[ORM\Column]
     private ?int $UserPhone = null;
@@ -97,14 +100,14 @@ class Users implements UserInterface
         return $this;
     }
 
-    public function getUserEmail(): ?string
+    public function getEmail(): ?string
     {
-        return $this->UserEmail;
+        return $this->email;
     }
 
-    public function setUserEmail(string $UserEmail): static
+    public function setEmail(string $email): static
     {
-        $this->UserEmail = $UserEmail;
+        $this->email = $email;
 
         return $this;
     }

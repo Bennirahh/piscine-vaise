@@ -34,7 +34,7 @@ class UsersCrudController extends AbstractCrudController
     {
         yield TextField::new('UserName', 'Nom');
         yield TextField::new('UserFirstname', 'Prenom');
-        yield EmailField::new('UserEmail', 'Email');
+        yield EmailField::new('email', 'Email');
         yield TelephoneField::new('UserPhone', 'Téléphone');
         yield DateField::new('UserBirthday', 'Date de naissance');
         yield BooleanField::new('UserIsAdmin', 'Admin');
