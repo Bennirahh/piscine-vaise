@@ -25,7 +25,7 @@ class SectorCrudController extends AbstractCrudController
         ->setRequired(true)
         ->setFormTypeOption('choice_label', 'UserFirstname'); 
 
-        yield TextField::new('sectorName','Specialité');
+        yield TextField::new('sectorName','Specialité du professeur');
     }
     
 }

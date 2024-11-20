@@ -14,6 +14,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField; 
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
+use App\Controller\Admin;
+
 
 
 
@@ -37,6 +39,7 @@ class UsersCrudController extends AbstractCrudController
         yield DateField::new('UserBirthday', 'Date de naissance');
         yield BooleanField::new('UserIsAdmin', 'Admin');
 
+        yield TextField::new('password', 'Mot de passe');
         yield AssociationField::new('sector')
         ->setLabel('Specialité')
         ->setRequired(false)

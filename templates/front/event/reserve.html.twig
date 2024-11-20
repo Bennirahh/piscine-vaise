@@ -1,0 +1,26 @@
+{# templates/front/event/reserve.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Réserver l'événement{% endblock %}
+
+{% block body %}
+    <h1>Réserver : {{ event.eventName }}</h1>
+    <p>Date de l'événement : {{ event.eventDate|date('Y-m-d H:i') }}</p>
+    <p>Capacité : {{ event.eventCapacity }}</p>
+    <p>Prix de l'événement : {{ event.eventPrice }} €</p>
+    
+
+    <form action="{{ path('event_reserve', {id: event.id}) }}" method="POST">
+        <label for="reservation_people_number">Nombre de personnes :</label>
+        <input type="number" id="reservation_people_number" name="reservation_people_number" required>
+
+        <label for="reservation_category">Catégorie de réservation :</label>
+        <select id="reservation_category" name="reservation_category" required>
+            <option value="Standard">Standard</option>
+            <option value="VIP">VIP</option>
+            <!-- Ajoutez d'autres catégories si nécessaire -->
+        </select>
+
+        <button type="submit" class="btn btn-primary">Réserver cet événement</button>
+    </form>
+{% endblock %}

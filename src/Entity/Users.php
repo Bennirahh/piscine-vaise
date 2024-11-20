@@ -7,9 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
-class  Users
+class Users implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -33,6 +34,10 @@ class  Users
 
     #[ORM\Column(nullable: true)]
     private ?bool $UserIsAdmin = null;
+
+    // Propriétés de sécurité
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $password = null;
 
     /**
      * @var Collection<int, Role>
@@ -62,6 +67,7 @@ class  Users
         $this->events = new ArrayCollection();
     }
 
+    // Getter et setter pour les propriétés existantes
     public function getId(): ?int
     {
         return $this->id;
@@ -140,13 +146,47 @@ class  Users
     }
 
     /**
-     * @return Collection<int, Role>
+     * @return array
      */
-    public function getRoles(): Collection
+    public function getRoles(): array
     {
-        return $this->roles;
+        // On convertit les rôles en tableau et on ajoute un rôle par défaut si nécessaire
+        $roles = $this->roles->map(fn($role) => $role->getName())->toArray();  // Conversion des objets Role en noms de rôles
+        $roles[] = 'ROLE_USER';  // Ajoute un rôle par défaut
+
+        return $roles;
     }
 
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getSalt(): ?string
+    {
+        // Pas nécessaire avec bcrypt
+        return null;
+    }
+
+    // Implémentation de la méthode manquante
+    public function getUserIdentifier(): string
+    {
+        return $this->UserEmail;  // Ou $this->UserName selon ton cas
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Efface les données sensibles après l'authentification
+    }
+
+    // Méthodes pour les rôles
     public function addRole(Role $role): static
     {
         if (!$this->roles->contains($role)) {
