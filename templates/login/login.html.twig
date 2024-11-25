@@ -1,41 +1,65 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Log in!{% endblock %}
-
-{% block body %}
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+</head>
+<body>
+    <div class="page-login">
+        <div class="login-navbar">
+            <ul>
+                <li>Planning</li>
+                <li>Billetterie</li>
+                <li><img width="60%" src="{{ asset('img/Logo1.png') }}"></li>
+                <li>Contact</li>
+                <li>Connexion</li>
+            </ul>
+        </div>
+        <div class="login-centre">
+            <div class="login-titre login-titre-bloc">
+                <p class="login-titre login-titre1">SE CONNECTER</p>
+                <p class="login-titre login-titre2">CONTENT DE TE REVOIR</p>
+                <p class="login-texte">Réactivez votre énergie ! Connectez-vous pour accéder à vos séances et révélez le potentiel athlétique qui est en vous</p>
             </div>
-        {% endif %}
+            <div class="login-formulaire-bloc">
+                <form method="post" class="login-formulaire">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="username">Email</label>
-        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
-        <label for="password">Password</label>
-        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
 
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
+                    <p class="login-form-titre">Votre compte</p>
+                    <label class="login-label" for="username">E-mail</label><br>
+                    <input class="login-input" type="email" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus><br>
+                    <label class="login-label" for="password">Mot de passe</label><br>
+                    <input class="login-input" type="password" name="_password" id="password" autocomplete="current-password" required><br>
 
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            <div class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Remember me</label>
+                    <button class="login-submit" type="submit">
+                        Se connecter
+                    </button>
+
+                    <div class="login-barre"></div>
+                    <div class="login-form-footer">
+                        <p>Vous n'avez pas de compte ?</p>
+                        <div></div>
+                        <div class="login-form-footer-logo">
+                            <p>S'inscrire</p>
+                            <img src="{{ asset('img/login-submit.png') }}">
+                        </div>
+                    </div>
+                </form>
             </div>
-        #}
-
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
-    </form>
-{% endblock %}
+        </div>
+    </div>
+    <script src="{{ asset('js/theme.js') }}"></script>
+</body>
+</html>
