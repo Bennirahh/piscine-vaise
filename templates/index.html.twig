@@ -423,3 +423,13 @@
     <script src="{{ asset('js/theme.js') }}"></script>
 {% endblock %}
 </html>
+
+
+{% for user in users %}
+    <li>{{ user.UserFirstname }}</li>
+    {% if user.reservation %}
+        <li>{{ user.reservation.reservationCategory }}</li>
+    {% else %}
+        <li>Aucune réservation</li>
+    {% endif %}
+{% endfor %}
