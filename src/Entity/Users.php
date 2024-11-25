@@ -181,7 +181,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     // Implémentation de la méthode manquante
     public function getUserIdentifier(): string
     {
-        return $this->UserEmail;  // Ou $this->UserName selon ton cas
+        return $this->email;// Ou $this->UserName selon ton cas
     }
 
     public function eraseCredentials(): void
