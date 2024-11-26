@@ -1,0 +1,19 @@
+{# templates/user_edit/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier votre profil{% endblock %}
+
+{% block body %}
+    <h1>Modifier votre profil</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.UserFirstname) }}
+        {{ form_row(form.UserName) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.UserPhone) }}
+        {{ form_row(form.plainPassword) }}
+
+        <button class="btn btn-primary" type="submit">Mettre à jour</button>
+    {{ form_end(form) }}
+{% endblock %}
