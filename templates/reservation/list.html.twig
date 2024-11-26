@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes réservations{% endblock %}
+
+{% block body %}
+    <h1>Mes réservations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Catégorie</th>
+                <th>Date</th>
+                <th>Personnes</th>
+                <th>Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.reservationCategory }}</td>
+                    <td>{{ reservation.reservationDate|date('d/m/Y H:i') }}</td>
+                    <td>{{ reservation.reservationPeaopleNumber }}</td>
+                    <td>{{ reservation.reservationPrice }}€</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucune réservation trouvée.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

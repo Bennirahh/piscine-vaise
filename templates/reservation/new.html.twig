@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservation{% endblock %}
+
+{% block body %}
+<h1>Créer une nouvelle réservation</h1>
+
+{{ form_start(form) }}
+
+<!-- Champ pour choisir le type de réservation -->
+<div class="form-group">
+    {{ form_label(form.reservationCategory) }}
+    {{ form_widget(form.reservationCategory) }}
+</div>
+
+<!-- Champ pour la date de réservation -->
+<div class="form-group">
+    {{ form_label(form.reservationDate) }}
+    {{ form_widget(form.reservationDate) }}
+</div>
+
+<!-- Champ pour le nombre de personnes -->
+<div class="form-group">
+    {{ form_label(form.reservationPeaopleNumber) }}
+    {{ form_widget(form.reservationPeaopleNumber) }}
+</div>
+
+<!-- Champ pour le prix -->
+<div class="form-group">
+    {{ form_label(form.reservationPrice) }}
+    {{ form_widget(form.reservationPrice) }}
+</div>
+
+<!-- Section pour l'événement (affichée uniquement si "Event" est sélectionné) -->
+<div id="eventSection" class="form-group" style="display: none;">
+    {{ form_label(form.event) }}
+    {{ form_widget(form.event) }}
+</div>
+
+<!-- Section pour le lieu (affichée uniquement si "Location" est sélectionné) -->
+<div id="locationSection" class="form-group" style="display: none;">
+    {{ form_label(form.location) }}
+    {{ form_widget(form.location) }}
+</div>
+
+<!-- Section pour l'équipement (affichée uniquement si "Equipement" est sélectionné) -->
+<div id="equipementSection" class="form-group" style="display: none;">
+    {{ form_label(form.equipement) }}
+    {{ form_widget(form.equipement) }}
+</div>
+
+<!-- Bouton de soumission -->
+<div class="form-group">
+    {{ form_widget(form.save) }}
+</div>
+
+{{ form_end(form) }}
+
+<!-- JavaScript pour afficher/masquer les sections selon le type de réservation sélectionné -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Récupérer le champ "reservationCategory"
+        var reservationCategoryField = document.getElementById("{{ form.reservationCategory.vars.id }}");
+
+        // Récupérer les sections d'événement, de lieu et d'équipement
+        var eventSection = document.getElementById("eventSection");
+        var locationSection = document.getElementById("locationSection");
+        var equipementSection = document.getElementById("equipementSection");
+
+        // Fonction pour afficher ou masquer les sections
+        function toggleSections() {
+            var selectedCategory = reservationCategoryField.value;
+            
+            // Masquer toutes les sections
+            eventSection.style.display = 'none';
+            locationSection.style.display = 'none';
+            equipementSection.style.display = 'none';
+
+            // Afficher la section en fonction du type sélectionné
+            if (selectedCategory === 'event') {
+                eventSection.style.display = 'block';
+            } else if (selectedCategory === 'location') {
+                locationSection.style.display = 'block';
+            } else if (selectedCategory === 'equipement') {
+                equipementSection.style.display = 'block';
+            }
+        }
+
+        // Initialiser l'affichage au chargement de la page
+        toggleSections();
+
+        // Ajouter un événement pour mettre à jour l'affichage lorsqu'un choix est fait
+        reservationCategoryField.addEventListener('change', toggleSections);
+    });
+</script>
+
+{% endblock %}
