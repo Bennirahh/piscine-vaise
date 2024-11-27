@@ -83,13 +83,17 @@ body {
 }
 
 .register-input {
+    padding: 3%;
     border-radius: 8px;
-    border-width: 1px;
+    border-width: 2px;
     border-color: #B6BAAC;
     background-color: #E9EDDB;
     width: 95%;
     border-style: solid;
-    padding: 2%;
+}
+
+.register-input-gauche{
+    margin-right: 10%;
 }
 
 .register-input-1 {
