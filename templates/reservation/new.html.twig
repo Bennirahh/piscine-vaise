@@ -56,27 +56,24 @@
 
 {{ form_end(form) }}
 
-<!-- JavaScript pour afficher/masquer les sections selon le type de réservation sélectionné -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Récupérer le champ "reservationCategory"
+        // Récupérer les éléments nécessaires
         var reservationCategoryField = document.getElementById("{{ form.reservationCategory.vars.id }}");
-
-        // Récupérer les sections d'événement, de lieu et d'équipement
         var eventSection = document.getElementById("eventSection");
         var locationSection = document.getElementById("locationSection");
         var equipementSection = document.getElementById("equipementSection");
 
-        // Fonction pour afficher ou masquer les sections
+        // Fonction pour afficher ou masquer les sections en fonction de la catégorie sélectionnée
         function toggleSections() {
             var selectedCategory = reservationCategoryField.value;
             
-            // Masquer toutes les sections
+            // Masquer toutes les sections par défaut
             eventSection.style.display = 'none';
             locationSection.style.display = 'none';
             equipementSection.style.display = 'none';
 
-            // Afficher la section en fonction du type sélectionné
+            // Afficher la section correspondante en fonction de la catégorie sélectionnée
             if (selectedCategory === 'event') {
                 eventSection.style.display = 'block';
             } else if (selectedCategory === 'location') {
@@ -86,12 +83,31 @@
             }
         }
 
-        // Initialiser l'affichage au chargement de la page
+        // Initialiser l'affichage en fonction de la catégorie pré-sélectionnée
         toggleSections();
 
-        // Ajouter un événement pour mettre à jour l'affichage lorsqu'un choix est fait
+        // Ajouter un écouteur d'événement pour changer l'affichage lorsque l'utilisateur change la catégorie
         reservationCategoryField.addEventListener('change', toggleSections);
     });
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const eventSelect = document.querySelector('#form_event'); // Vérifiez que l'ID du champ 'event' est correct
+    const priceInput = document.querySelector('#form_reservationPrice'); // Vérifiez que l'ID du champ 'prix' est correct
+
+    // Vérifier si l'élément 'eventSelect' existe avant d'ajouter l'événement
+    if (eventSelect) {
+        eventSelect.addEventListener('change', function() {
+            const selectedOption = eventSelect.options[eventSelect.selectedIndex];
+            const price = selectedOption.dataset.price || 0; // Obtenir le prix depuis l'attribut data-price
+            priceInput.value = price; // Mettre à jour la valeur du champ prix
+        });
+    }
+});
+
+</script>
+
+
 
 {% endblock %}

@@ -1,19 +1,20 @@
-<?php
+<?php 
 
 namespace App\Form;
 
+
 use App\Entity\Reservation;
+use App\Entity\Event;
+use App\Entity\Location;
+use App\Entity\Equipement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;  // Ajout de IntegerType
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;  // Ajout de DateTimeType
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;  // Ajout de MoneyType pour le prix
-use App\Entity\Equipement;
-use App\Entity\Location;
-use App\Entity\Event;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class ReservationType extends AbstractType
 {
@@ -45,16 +46,21 @@ class ReservationType extends AbstractType
                 'label' => 'Prix',
                 'currency' => 'EUR',
                 'required' => true,
-            ]);
-
-        // Ajouter un champ pour les événements si la réservation concerne un événement
-        if ($events) {
-            $builder->add('event', ChoiceType::class, [
+            ])
+            // Ajoutez ici le champ 'event' en utilisant les événements passés dans les options
+            ->add('event', ChoiceType::class, [
                 'choices' => $events,
+                'choice_label' => function (Event $event) {
+                    return $event->getEventName(); // Nom de l'événement
+                },
+                'choice_attr' => function (Event $event) {
+                    return ['data-price' => $event->getEventPrice()]; // Ajouter le prix dans l'attribut data-price
+                },
                 'placeholder' => 'Sélectionner un événement',
                 'required' => false,
             ]);
-        }
+            
+        ;
 
         // Ajouter un champ pour les lieux si la réservation concerne un lieu
         if ($locations) {

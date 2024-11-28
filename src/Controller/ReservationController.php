@@ -20,6 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType; // Pour les boutons d
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType; // Pour les champs de type choix (par exemple, une liste déroulante)
 use Symfony\Component\Form\Extension\Core\Type\DateType; // Pour les champs de type date
 use Symfony\Component\Form\FormTypeInterface; // Pour la déclaration du type de formulaire
+use Symfony\Component\Form\FormBuilder;
 
 
 class ReservationController extends AbstractController
@@ -35,14 +36,26 @@ class ReservationController extends AbstractController
         $equipments = $entityManager->getRepository(Equipement::class)->findAll();
 
 
-        $form = $this->createForm(ReservationType::class, $reservation
-,[
-            'events' => $events,
-            'locations' => $locations,
-            'equipements' => $equipments,
+        $form = $this->createForm(ReservationType::class, $reservation, [
+            'events' => $entityManager->getRepository(Event::class)->findAll(),
+            'locations' => $entityManager->getRepository(Location::class)->findAll(),
+            'equipements' => $entityManager->getRepository(Equipement::class)->findAll(),
         ]);
 
         $form->handleRequest($request);
+
+        if($form->isSubmitted()&& $form->isValid()){
+            $data = $form->getData();
+
+            if ($data->getReservationCategory() === 'event' && $data->getEvent()) {
+                $reservation->setReservationPrice($data->getEvent()->getPrice());
+            } elseif ($data->getReservationCategory() === 'location' && $data->getLocation()) {
+                $reservation->setReservationPrice($data->getLocation()->getPrice());
+            } elseif ($data->getReservationCategory() === 'equipement' && $data->getEquipement()) {
+                $reservation->setReservationPrice($data->getEquipement()->getPrice());
+            }
+        
+        }
 
         return $this->render('reservation/new.html.twig', [
             'form' => $form->createView(),
@@ -51,49 +64,59 @@ class ReservationController extends AbstractController
     }
 
     #[Route('/reservation', name: 'reservation_list')]
-    public function list(): Response
+    public function list(Request $request, EntityManagerInterface $entityManager): Response
     {
         // Récupérer les réservations de l'utilisateur connecté
         $user = $this->getUser();
         $reservations = $user ? $user->getReservation() : [];
-
-        if($form->isSubmitted()&& $form->isValid()){
-            $user = $this->getUser();
-            if($user){
+    
+        // Si vous souhaitez afficher un formulaire pour effectuer une nouvelle réservation ici :
+        $reservation = new Reservation();
+    
+        // Créez un formulaire basé sur votre type de formulaire existant
+        $form = $this->createForm(ReservationType::class, $reservation);
+    
+        // Traitez la soumission du formulaire
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Associez l'utilisateur à la réservation
+            if ($user) {
                 $reservation->setUser($user);
             }
+    
+            // Gestion de la catégorie de réservation
+            $category = $reservation->getReservationCategory();
+            if ($category === 'event') {
+                $event = $form->get('event')->getData();
+                $reservation->getEventName($event);
+                $reservation->setLocation(null);
+                $reservation->setEquipement(null);
+            } elseif ($category === 'location') {
+                $location = $form->get('location')->getData();
+                $reservation->setLocation($location);
+                $reservation->setEvent(null);
+                $reservation->setEquipement(null);
+            } elseif ($category === 'equipement') {
+                $equipement = $form->get('equipement')->getData();
+                $reservation->setEquipement($equipement);
+                $reservation->setEvent(null);
+                $reservation->setLocation(null);
+            }
+    
+            // Enregistrez la réservation dans la base de données
+            $entityManager->persist($reservation);
+            $entityManager->flush();
+    
+            // Ajoutez un message flash et redirigez
+            $this->addFlash('success', 'Votre réservation a été enregistrée avec succès.');
+            return $this->redirectToRoute('reservation_list');
         }
-
-        if ($reservation->getReservationCategory() === 'event') {
-            // Si la réservation est pour un événement, on associe l'événement et on met à null le lieu et l'équipement
-            $event = $form->get('event')->getData();
-            $reservation->setEvent($event);
-            $reservation->setLocation(null);
-            $reservation->setEquipement(null);
-        } elseif ($reservation->getReservationCategory() === 'location') {
-            // Si la réservation est pour un lieu, on associe le lieu et met à null l'événement et l'équipement
-            $location = $form->get('location')->getData();
-            $reservation->setLocation($location);
-            $reservation->setEvent(null);
-            $reservation->setEquipement(null);
-        } elseif ($reservation->getReservationCategory() === 'equipement') {
-            // Si la réservation est pour un équipement, on associe l'équipement et met à null l'événement et le lieu
-            $equipement = $form->get('equipement')->getData();
-            $reservation->setEquipement($equipement);
-            $reservation->setEvent(null);
-            $reservation->setLocation(null);
-        }
-
-        $entityManager->persist($reservation);
-        $entityManager->flush();
-
-        $this->addFlash('success', 'Votre réservation a été enregistrée avec succès.');
-        return $this->redirectToRoute('reservation_list');
-
-
-
+    
+        // Rendre la liste des réservations et le formulaire
         return $this->render('reservation/list.html.twig', [
             'reservations' => $reservations,
+            'form' => $form->createView(),
         ]);
     }
+    
 }
