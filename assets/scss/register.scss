@@ -8,8 +8,6 @@
     src: url(../fonts/Inter-VariableFont_opsz\,wght.ttf);
 }
 
-
-
 body {
     background-image: url('../img/background1.jpg');
     margin: 0;
@@ -67,7 +65,7 @@ body {
     padding: 10%;
     margin: 5%;
     border-radius: 8px;
-    height:75%;
+    height: 75%;
 }
 
 .register-label {
@@ -82,12 +80,18 @@ body {
     font-weight: bold;
 }
 
+.register-form-label {
+    color: #4C5214;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .register-input {
     border-radius: 8px;
     border-width: 1px;
     border-color: #B6BAAC;
     background-color: #E9EDDB;
-    width: 95%;
+    width: 100%;
     border-style: solid;
     padding: 2%;
 }
@@ -98,11 +102,12 @@ body {
     margin-bottom: 10%;
 }
 
-.register-input-case{
-    margin: 0%;
+.register-input-case {
+    margin-right: 10%;
+    margin-left: 0;
 }
 
-.register-input-case2{
+.register-input-case2 {
     margin-left: 5%;
 }
 
