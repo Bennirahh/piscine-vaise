@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>billetterie</title>
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+</head>
+
+<body {% if app.request.get('_route')=='billetterie' %}style="background-color: white;" {% elseif
+    app.request.get('_route') in ['login', 'register' ] %}style="background-image: url('../img/background1.jpg');" {%
+    endif %}>
+
+    {% block body %}
+    <div class="page-billetterie">
+        <div class="billetterie-navbar">
+            <ul>
+                <li>Planning</li>
+                <li>Billetterie</li>
+                <li><img width="60%" src="../img/Logo1.png"></li>
+                <li>Contact</li>
+                <li>Connexion</li>
+            </ul>
+        </div>
+        <div class="billetterie-titre">
+            <img src="../img/billetterie-ticket.png" alt="">
+            <p>Billetterie</p>
+        </div>
+        <div class="billetterie-tarifs">
+            <div class="billetterie-tarifs-case1">
+                <div class="billetterie-case1">
+                    <p class="billetterie-titre-billet">Billet standart</p>
+                    <p class="billetterie-tarifs-type">Enfant</p>
+                    <p>Age 3-17 ans</p>
+                    <span class="billetterie-tarifs-prix1">4</span><span class="billetterie-tarifs-prix2">.99 €</span>
+                    <br>
+                    <button class="billetterie-tarifs-acheter">Acheter</button>
+                    <p class="billet-titre-bas">Les enfants de 2 ans et moins sont GRATUITS</p>
+                </div>
+            </div>
+            <div class="billetterie-tarifs-case2">
+                <div class="billetterie-case2">
+                    <p class="billetterie-titre-billet">Billet standart</p>
+                    <p class="billetterie-tarifs-type">Adulte</p>
+                    <p>Age 18-59 ans</p>
+                    <span class="billetterie-tarifs-prix1">9</span><span class="billetterie-tarifs-prix2">.99 €</span>
+                    <br>
+                    <button class="billetterie-tarifs-acheter">Acheter</button>
+                </div>
+            </div>
+            <div class="billetterie-tarifs-case3">
+                <div class="billetterie-case3">
+                    <p class="billetterie-titre-billet">Billet standart</p>
+                    <p class="billetterie-tarifs-type">Senior</p>
+                    <p>Age 18-59 ans</p>
+                    <span class="billetterie-tarifs-prix1">6</span><span class="billetterie-tarifs-prix2">.99 €</span>
+                    <br>
+                    <button class="billetterie-tarifs-acheter">Acheter</button>
+                </div>
+            </div>
+            <div class="billetterie-tarifs-case4">
+                <div class="billetterie-case4">
+                    <p class="billetterie-titre-billet">Abonnement</p>
+                    <p class="billetterie-tarifs-type">Membres</p>
+                    <p>Age 60 ans +</p>
+                    <span class="billetterie-tarifs-prix1">99</span><span class="billetterie-tarifs-prix2">.99 €</span>
+                    <br>
+                    <button class="billetterie-tarifs-acheter">Acheter</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="billetterie-reservation">
+            <div class="billetterie-reservation-case">
+                <img src="../img/billetterie-basket.png" alt="">
+                <H2>Basket</H2>
+                <p>Le terrain de basket sur mesure, rien que pour vous. Chaque créneau offre un moment de jeu
+                    unique,
+                    adapté à vos besoins.</p>
+                <button class="billetterie-tarifs-acheter">Réserver</button>
+            </div>
+            <div class="billetterie-reservation-case">
+                <img src="../img/billetterie-tennis.png" alt="">
+                <H2>Tennis</H2>
+                <p>Votre court de tennis, entièrement réservé. Profitez d’un espace conçu pour un jeu sur mesure à
+                    chaque session.</p>
+                <button class="billetterie-tarifs-acheter">Réserver</button>
+            </div>
+            <div class="billetterie-reservation-case">
+                <img src="../img/billetterie-foot.png" alt="">
+                <H2>Football</H2>
+                <p>Un terrain de foot 6v6 réservé à votre équipe. Vivez une expérience de jeu dynamique et personnalisée
+                    à chaque réservation.</p>
+                <button class="billetterie-tarifs-acheter">Réserver</button>
+            </div>
+            <div class="billetterie-reservation-case">
+                <img src="../img/billetterie-boxe.png" alt="">
+                <H2>Boxe</H2>
+                <p>Un ring de boxe juste pour vous. Entraînez-vous dans un espace privé et optimisé pour chaque séance,
+                    prêt pour le combat.</p>
+                <button class="billetterie-tarifs-acheter">Réserver</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="{{ asset('js/theme.js') }}"></script>
+
+    {% endblock %}
+
+</html>

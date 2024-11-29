@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+</head>
+
+<body {% if app.request.get('_route') == 'billetterie' %}style="background-color: white;"{% elseif app.request.get('_route') in ['login', 'register'] %}style="background-image: url('../img/background1.jpg');"{% endif %}>
+
+    {% block body %}
+    <div class="page-register">
+        <div class="register-navbar">
+            <ul>
+                <li>Planning</li>
+                <li>Billetterie</li>
+                <li><img width="60%" src="../img/Logo1.png"></li>
+                <li>Contact</li>
+                <li>Connexion</li>
+            </ul>
+        </div>
+        <div class="register-centre">
+            <div class="register-titre register-titre-bloc">
+                <p class="register-titre register-titre1">Créer un compte</p>
+                <p class="register-titre register-titre2">Prêt à te surpasser ?</p>
+                <p class="register-texte">Créez votre compte et démarrez votre transformation ! Rejoignez-nous pour
+                    accéder
+                    à vos séances et révéler la meilleure version de vous-même.</p>
+            </div>
+            <div class="register-formulaire-bloc">
+                <form class="register-formulaire">
+                    <p class="register-form-titre">Création de mon compte</p>
+                    <div class="register-input-1">
+                        <div class="register-input-case">
+                            <label class="register-label" for="fname">Nom</label><br>
+                            <input class="register-input" type="text" id="fname" name="fname" placeholder="Voulzy">
+                        </div>
+                        <div class="register-input-case2">
+                            <label class="register-label" for="fname">Prénom</label><br>
+                            <input class="register-input" type="text" id="fname" name="fname" placeholder="Laurent">
+                        </div>
+                    </div>
+                    <div class="register-input-1">
+                        <div class="register-input-case">
+                            <label class="register-label" for="fname">Mot de passe</label><br>
+                            <input class="register-input" type="text" id="fname" name="fname"
+                                placeholder="Votre mot de passe">
+                        </div>
+                        <div class="register-input-case2">
+                            <label class="register-label" for="fname">Mot de passe</label><br>
+                            <input class="register-input" type="text" id="fname" name="fname"
+                                placeholder="Confirmer le mot de passe">
+                        </div>
+                    </div>
+                    <label class="register-label" for="fname">E-mail</label><br>
+                    <input class="register-input" type="text" id="fname" name="fname" placeholder="Exemple@exemple.fr">
+                    <input class="register-submit" type="submit" value="Créer votre compte">
+                    <div class="register-barre"></div>
+                    <div class="register-form-footer">
+                        <p>Vous avez déjà un compte ?</p>
+                        <div></div>
+                        <div class="register-form-footer-logo">
+                            <p>Connexion</p>
+                            <img src="../img/register-submit.png">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </section>
+    <script src="{{ asset('js/theme.js') }}"></script>
+
+    {% endblock %}
+
+</html>
