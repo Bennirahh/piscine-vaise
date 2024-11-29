@@ -54,3 +54,5 @@ Thumbs.db
 
 /public/bundles/easyadmin/
 /assets/vendor/
+public/css/theme.css
+public/js/theme.js
