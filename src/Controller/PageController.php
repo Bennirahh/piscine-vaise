@@ -25,9 +25,8 @@ class PageController extends AbstractController
     {
         return $this->render('billetterie.html.twig');
     }
-}
 
-
+    
     #[Route('/profil', name: 'profil')]
     public function profil(): Response
     {
