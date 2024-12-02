@@ -4,6 +4,5 @@ import '../scss/register.scss';
 import '../scss/billetterie.scss';
 
 import '../scss/profil.scss';
-import '../scss/profiledit.scss';
 
 console.log("Scripts.js chargé");
