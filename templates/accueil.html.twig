@@ -10,7 +10,6 @@
 	</head>
 
 	<body {% if app.request.get('_route')=='accueil' %} style="background-color: white;" {% elseif app.request.get('_route') in ['login', 'register' ] %} style="background-image: url('../img/background1.jpg');" {% endif %}></body>
-	<body {% if app.request.get('_route')=='accueil' %} style="background-color: white;" {% elseif app.request.get('_route') in ['login', 'register' ] %} style="background-image: url('../img/background1.jpg');" {% endif %}>
 
 		{% block body %}
 		<div class="page-accueil">
@@ -107,7 +106,6 @@
 													                    où chaque match vous rapproche de la victoire et de nouveaux amis !</p>
 				</div>
 			</div>
-			{% block body %}
 				<div class="page-accueil">
 					<div class="accueil-navbar">
 						<ul>
