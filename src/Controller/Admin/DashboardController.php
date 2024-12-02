@@ -27,8 +27,12 @@ class DashboardController extends AbstractDashboardController
         // Obtenir l'utilisateur actuellement connecté
         $user = $this->getUser();
 
+        // Ajouter des logs pour déboguer
+        error_log('Utilisateur connecté : ' . ($user ? $user->getUserIdentifier() : 'Aucun'));
+
         // Vérifier si l'utilisateur est administrateur
         if (!$user || !$user instanceof Users || !$user->isUserIsAdmin()) {
+            error_log('Accès refusé pour l\'utilisateur : ' . ($user ? $user->getUserIdentifier() : 'Aucun'));
             // Rediriger vers la page d'accueil si l'utilisateur n'est pas admin
             return new RedirectResponse($this->generateUrl('profil'));
         }
