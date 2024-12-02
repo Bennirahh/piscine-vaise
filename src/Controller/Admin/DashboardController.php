@@ -30,7 +30,7 @@ class DashboardController extends AbstractDashboardController
         // Vérifier si l'utilisateur est administrateur
         if (!$user || !$user instanceof Users || !$user->isUserIsAdmin()) {
             // Rediriger vers la page d'accueil si l'utilisateur n'est pas admin
-            return new RedirectResponse($this->generateUrl('home_page'));
+            return new RedirectResponse($this->generateUrl('profil'));
         }
 
         return $this->render('admin/dashboard.html.twig');
