@@ -1,12 +1,16 @@
 <?php
 
+// src/Controller/Admin/DashboardController.php
+
 namespace App\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use App\Entity\Users;
 use App\Entity\Reservation;
 use App\Entity\Equipement;
@@ -20,7 +24,15 @@ class DashboardController extends AbstractDashboardController
     #[Route('/adminn', name: 'adminn')]
     public function index(): Response
     {
-        
+        // Obtenir l'utilisateur actuellement connecté
+        $user = $this->getUser();
+
+        // Vérifier si l'utilisateur est administrateur
+        if (!$user || !$user instanceof Users || !$user->isUserIsAdmin()) {
+            // Rediriger vers la page d'accueil si l'utilisateur n'est pas admin
+            return new RedirectResponse($this->generateUrl('home_page'));
+        }
+
         return $this->render('admin/dashboard.html.twig');
     }
 
@@ -40,6 +52,5 @@ class DashboardController extends AbstractDashboardController
         //yield MenuItem::linkToCrud('Événements', 'fas fa-calendar-alt', Event::class);
         yield MenuItem::linkToCrud('Lieu', 'fas fa-calendar-alt', Location::class);
         yield MenuItem::linkToCrud('Role', 'fas fa-calendar-alt', Role::class);
-        
     }
 }
