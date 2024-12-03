@@ -13,4 +13,23 @@ class PageController extends AbstractController
     {
         return $this->render('login.html.twig');
     }
+
+    #[Route('/billetterie', name: 'billetterie')]
+    public function billetterie(): Response
+    {
+        return $this->render('billetterie.html.twig');
+    }
+
+    
+    #[Route('/profil', name: 'profil')]
+    public function profil(): Response
+    {
+        return $this->render('profil.html.twig');
+    }
+    
+    #[Route('/profiledit', name: 'profiledit')]
+    public function profiledit(): Response
+    {
+        return $this->render('profiledit.html.twig');
+    }
 }
