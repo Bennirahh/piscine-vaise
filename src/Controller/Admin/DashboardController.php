@@ -21,7 +21,7 @@ use App\Entity\Role;
 
 class DashboardController extends AbstractDashboardController
 {
-    #[Route('/adminn', name: 'adminn')]
+    #[Route('/admin', name: 'adminn')]
     public function index(): Response
     {
         // Obtenir l'utilisateur actuellement connecté
