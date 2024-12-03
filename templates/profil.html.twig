@@ -1,31 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>flowbite</title>
-		<link rel="stylesheet" href="{{ asset('css/theme.css') }}">
-		<script src="https://cdn.tailwindcss.com"></script>
-		<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
-		<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-		<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-	</head>
-	{% block body %}
+{% extends 'base.html.twig' %}
+{% block title %}Log in!
+{% endblock %}
+{% block body %}
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>flowbite</title>
+			<link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+			<script src="https://cdn.tailwindcss.com"></script>
+			<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
+			<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+			<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+		</head>
 		<body>
-			<div class="login-navbar">
-				<ul>
-					<li>Planning</li>
-					<li>Billetterie</li>
-					<li><img width="60%" src="../img/Logo1.png"></li>
-					<li>Contact</li>
-					<li>Connexion</li>
-				</ul>
-			</div>
 			<main class="profile-page">
 				<section class="relative block h-500-px">
 					<div class="absolute top-0 w-full h-full bg-center bg-cover" style="
-																					        background-image: url('../img/profil-background.webp');
-																					      ">
+																																																	        background-image: url('../img/profil-background.webp');
+																																																	      ">
 						<img alt="Profil de l'utilisateur" src="../img/profil-backround.webp">
 					</div>
 					<div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
@@ -93,5 +87,5 @@
 		</body>
 
 		<script src="{{ asset('js/theme.js') }}"></script>
-	{% endblock %}
-</html>
+	</html>
+{% endblock %}
