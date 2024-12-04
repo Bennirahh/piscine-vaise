@@ -1,3 +1,4 @@
+{% block body %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -10,7 +11,7 @@
 		<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
 		<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 	</head>
-	{% block body %}
+	
 		<body>
 			<div class="login-navbar">
 				<ul>
@@ -94,4 +95,5 @@
 		</body>
 	</html>
 </main>
-<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script></body><script src="{{ asset('js/theme.js') }}"></script>{% endblock %}</html>
+
+{% endblock %}
