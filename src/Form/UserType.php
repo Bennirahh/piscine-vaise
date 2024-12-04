@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class UserType extends AbstractType
 {
@@ -38,6 +39,9 @@ class UserType extends AbstractType
                 'label' => 'Nouveau mot de passe',
                 'required' => false,
                 'mapped' => false, // Champ non lié directement à l'entité Users
+            ])
+            ->add('UserBirthday', BirthdayType::class, [
+                'label' => 'Date de naissance'
             ]);
     }
 
