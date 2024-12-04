@@ -13,15 +13,6 @@
 	</head>
 	
 		<body>
-			<div class="login-navbar">
-				<ul>
-					<li>Planning</li>
-					<li>Billetterie</li>
-					<li><img width="60%" src="../img/Logo1.png"></li>
-					<li>Contact</li>
-					<li>Connexion</li>
-				</ul>
-			</div>
 			<main class="profile-page">
 				<section class="relative block h-500-px">
 					<div class="absolute top-0 w-full h-full bg-center bg-cover" style="
@@ -66,7 +57,8 @@
 											<img src="../img/profil-logouser.svg" alt="Profil Logo" class="inline-block mr-2 text-lg"/>{{app.user.UserFirstname}}
 										</div>
 										<div class="mb-2 text-blueGray-600 mt-10">
-											<img src="../img/profil-logouser.svg" alt="Profil Logo" class="inline-block mr-2 text-lg"/>{{ app.user.username }}</p>
+											<img src="../img/profil-logouser.svg" alt="Profil Logo" class="inline-block mr-2 text-lg"/>{{ app.user.username }}</p></main>
+
 
 									</div>
 									{% if app.user.sector is not null %}
