@@ -1,10 +1,10 @@
-.header-liens{
+.header-liens {
     text-decoration: none;
     color: black;
 }
 
 
-.footer-content{
+.footer-content {
     text-align: center;
 }
 
@@ -30,23 +30,28 @@
     margin-right: 2%;
 }
 
-.footer-lien{
+.footer-lien {
     margin-right: 5%;
     text-decoration: none;
     color: black;
 }
 
-.footer-case{
+.footer-case {
     padding-top: 10%;
 }
 
-.footer-copyright{
-    margin:0;
+.footer-reseau {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.footer-copyright {
+    margin: 0;
     padding-bottom: 2%;
 }
 
-.footer-copy{
-    margin:0;
+.footer-copy {
+    margin: 0;
     padding-top: 1%;
     padding-bottom: 1%;
 }
