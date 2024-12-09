@@ -1,12 +1,597 @@
 /*!***********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/scss/theme.scss ***!
   \***********************************************************************************************************************************************************/
-body {
-  background-color: red;
-}
+<<<<<<< HEAD
+=======
+
 /*!***********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/scss/login.scss ***!
   \***********************************************************************************************************************************************************/
-.test {
-  color: red;
+@font-face {
+  font-family: Montserrat;
+  src: url(../img/design/Montserrat-VariableFont_wght.7e6871.ttf);
 }
+@font-face {
+  font-family: Inter;
+  src: url(../img/design/Inter-VariableFont_opsz,wght.e05c5f.ttf);
+}
+>>>>>>> main
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+}
+<<<<<<< HEAD
+=======
+
+.page-login {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.login-navbar {
+  text-align: center;
+  font-family: Inter;
+}
+
+.login-navbar li {
+  display: inline-block;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  vertical-align: middle;
+}
+
+.login-centre {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+.login-titre {
+  color: white;
+  margin: 0;
+}
+
+.login-titre-bloc {
+  margin-top: 20%;
+  padding-right: 10%;
+}
+
+.login-titre1 {
+  font-size: 20px;
+}
+
+.login-titre2 {
+  font-size: 85px;
+  font-weight: bolder;
+}
+
+.login-texte {
+  font-family: Inter;
+}
+
+.login-formulaire {
+  background-color: #E9EDDB;
+  padding: 10%;
+  margin: 5%;
+  border-radius: 8px;
+  height: 80%;
+}
+
+.login-label {
+  color: #4C5214;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.login-form-titre {
+  color: #4C5214;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.login-input {
+  margin-bottom: 5%;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: #B6BAAC;
+  background-color: #E9EDDB;
+  width: 95%;
+  border-style: solid;
+  padding: 2%;
+}
+
+.login-submit {
+  margin-top: 2.5%;
+  background-color: #828F23;
+  border-radius: 5px;
+  border-width: 0;
+  color: white;
+  padding: 2%;
+}
+
+.login-barre {
+  background-color: #4C5214;
+  height: 2px;
+  margin-top: 5%;
+}
+
+.login-form-footer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.login-form-footer-logo {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.login-form-footer-logo img {
+  margin-left: 5%;
+  margin-top: 65%;
+}
+/*!**************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/scss/register.scss ***!
+  \**************************************************************************************************************************************************************/
+@font-face {
+  font-family: Montserrat;
+  src: url(../img/design/Montserrat-VariableFont_wght.7e6871.ttf);
+}
+@font-face {
+  font-family: Inter;
+  src: url(../img/design/Inter-VariableFont_opsz,wght.e05c5f.ttf);
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+}
+
+.page-register {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.register-navbar {
+  text-align: center;
+  font-family: Inter;
+}
+
+.register-navbar li {
+  display: inline-block;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  vertical-align: middle;
+}
+
+.register-centre {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+.register-titre {
+  color: white;
+  margin: 0;
+}
+
+.register-titre-bloc {
+  margin-top: 20%;
+  padding-right: 10%;
+}
+
+.register-titre1 {
+  font-size: 20px;
+}
+
+.register-titre2 {
+  font-size: 85px;
+  font-weight: bolder;
+}
+
+.register-texte {
+  font-family: Inter;
+}
+
+.register-formulaire {
+  background-color: #E9EDDB;
+  padding: 10%;
+  margin: 5%;
+  border-radius: 8px;
+  height: 75%;
+}
+
+.register-label {
+  color: #4C5214;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.register-form-titre {
+  color: #4C5214;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.register-input {
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: #B6BAAC;
+  background-color: #E9EDDB;
+  width: 95%;
+  border-style: solid;
+  padding: 2%;
+}
+
+.register-input-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 10%;
+}
+
+.register-input-case {
+  margin: 0%;
+}
+
+.register-input-case2 {
+  margin-left: 5%;
+}
+
+.register-submit {
+  margin-top: 2.5%;
+  background-color: #828F23;
+  border-radius: 5px;
+  border-width: 0;
+  color: white;
+  padding: 2%;
+}
+
+.register-barre {
+  background-color: #4C5214;
+  height: 2px;
+  margin-top: 5%;
+}
+
+.register-form-footer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.register-form-footer-logo {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.register-form-footer-logo img {
+  margin-left: 5%;
+  margin-top: 65%;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(../img/design/Montserrat-VariableFont_wght.7e6871.ttf);
+}
+@font-face {
+  font-family: Inter;
+  src: url(../img/design/Inter-VariableFont_opsz,wght.e05c5f.ttf);
+}
+body {
+  background-image: url(../images/design/background1.86cd9f.jpg);
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+}
+
+.page-register {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.register-navbar {
+  text-align: center;
+  font-family: Inter;
+}
+
+.register-navbar li {
+  display: inline-block;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  vertical-align: middle;
+}
+
+.register-centre {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+.register-titre {
+  color: white;
+  margin: 0;
+}
+
+.register-titre-bloc {
+  margin-top: 20%;
+  padding-right: 10%;
+}
+
+.register-titre1 {
+  font-size: 20px;
+}
+
+.register-titre2 {
+  font-size: 85px;
+  font-weight: bolder;
+}
+
+.register-texte {
+  font-family: Inter;
+}
+
+.register-formulaire {
+  background-color: #E9EDDB;
+  padding: 10%;
+  margin: 5%;
+  border-radius: 8px;
+  height: 75%;
+}
+
+.register-label {
+  color: #4C5214;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.register-form-titre {
+  color: #4C5214;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.register-form-label {
+  color: #4C5214;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.register-input {
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: #B6BAAC;
+  background-color: #E9EDDB;
+  width: 100%;
+  border-style: solid;
+  padding: 2%;
+}
+
+.register-input-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 10%;
+}
+
+.register-input-case {
+  margin-right: 10%;
+  margin-left: 0;
+}
+
+.register-input-case2 {
+  margin-left: 5%;
+}
+
+.register-submit {
+  margin-top: 2.5%;
+  background-color: #828F23;
+  border-radius: 5px;
+  border-width: 0;
+  color: white;
+  padding: 2%;
+}
+
+.register-barre {
+  background-color: #4C5214;
+  height: 2px;
+  margin-top: 5%;
+}
+
+.register-form-footer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.register-form-footer-logo {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.register-form-footer-logo img {
+  margin-left: 5%;
+  margin-top: 65%;
+}
+/*!*****************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/scss/billetterie.scss ***!
+  \*****************************************************************************************************************************************************************/
+@font-face {
+  font-family: Montserrat;
+  src: url(../img/design/Montserrat-VariableFont_wght.7e6871.ttf);
+}
+@font-face {
+  font-family: Inter;
+  src: url(../img/design/Inter-VariableFont_opsz,wght.e05c5f.ttf);
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+}
+
+.page-billetterie {
+  background-color: white;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+}
+
+.billetterie-navbar {
+  text-align: center;
+  font-family: Inter;
+}
+
+.billetterie-navbar li {
+  display: inline-block;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  vertical-align: middle;
+}
+
+.billetterie-titre img {
+  margin-left: 1%;
+}
+
+.billetterie-titre p {
+  display: inline-block;
+  font-size: 60px;
+  font-weight: bolder;
+  margin: 2%;
+}
+
+.billetterie-tarifs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.billetterie-titre-billet {
+  padding-top: 10%;
+  margin-top: 1%;
+}
+
+.billet-titre-bas {
+  margin-bottom: 1%;
+  padding-bottom: 10%;
+}
+
+.billetterie-tarifs-case1 {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#D5DD3C), to(#6E6C19));
+  background-image: linear-gradient(to bottom, #D5DD3C 0%, #6E6C19 100%);
+  border-radius: 8px;
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.billetterie-case1 {
+  background-color: white;
+  border-radius: 8px;
+  margin-left: 1%;
+  margin-right: 1%;
+  height: 98.25%;
+}
+
+.billetterie-tarifs-case2 {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4C5214), to(#828F23));
+  background-image: linear-gradient(to bottom, #4C5214 0%, #828F23 100%);
+  border-radius: 8px;
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.billetterie-case2 {
+  background-color: white;
+  border-radius: 8px;
+  margin-left: 1%;
+  margin-right: 1%;
+  height: 98.25%;
+}
+
+.billetterie-tarifs-case3 {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4C5214), to(#D5DD3C));
+  background-image: linear-gradient(to bottom, #4C5214 0%, #D5DD3C 100%);
+  border-radius: 8px;
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.billetterie-case3 {
+  background-color: white;
+  border-radius: 8px;
+  margin-left: 1%;
+  margin-right: 1%;
+  height: 98.25%;
+}
+
+.billetterie-tarifs-case4 {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#828F23), to(#CFDBA9));
+  background-image: linear-gradient(to bottom, #828F23 0%, #CFDBA9 100%);
+  border-radius: 8px;
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.billetterie-case4 {
+  background-color: white;
+  border-radius: 8px;
+  margin-left: 1%;
+  margin-right: 1%;
+  height: 98.25%;
+}
+
+.billetterie-tarifs-type {
+  font-size: 36px;
+  font-family: Inter;
+}
+
+.billetterie-tarifs-prix1 {
+  font-size: 100px;
+}
+
+.billetterie-tarifs-prix2 {
+  font-size: 40px;
+}
+
+.billetterie-tarifs-acheter {
+  border-radius: 5px;
+  background-color: #D5DD3C;
+  color: white;
+  border-style: none;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+}
+
+.billetterie-reservation {
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  text-align: center;
+}
+
+.billetterie-reservation-case {
+  padding: 5%;
+}
+
+.billetterie-reservation p {
+  text-align: left;
+  font-family: Inter;
+  border-left: 5px solid #D5DD3C;
+  padding-left: 5%;
+}
+
+.billetterie-reservation H2 {
+  font-size: 60px;
+}
+/*!************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/scss/profil.scss ***!
+  \************************************************************************************************************************************************************/
+.login-navbar {
+  text-align: center;
+  font-family: Inter;
+}
+
+.login-navbar li {
+  display: inline-block;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  vertical-align: middle;
+}
+>>>>>>> main

@@ -13,7 +13,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField; 
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField; 
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-
 use App\Controller\Admin;
 
 
