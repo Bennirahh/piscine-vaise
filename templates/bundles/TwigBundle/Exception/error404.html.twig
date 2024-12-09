@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <!DOCTYPE html>
+  <html lang="fr">
+    <head>
+      <link rel="stylesheet" href="{{ asset('css/theme.css') }}" />
+    </head>
+    <body>
+      <div class="error-grid">
+        <div class="error-grid1">
+          <div></div>
+          <div class="error-text">
+            <h1>Oops</h1>
+            <p>La page que vous cherchez semble introuvable. Retournez à l'accueil ou explorez d'autres sections du site.</p>
+          </div>
+          <div></div>
+        </div>
+        <div class="error-image">
+          <img src="../img/errorimage.png" alt="Image Erreur" />
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    </body>
+
+    <script src="{{ asset('js/theme.js') }}"></script>
+  </html>
+
+  <style>
+    .error-text {
+      font-size: large;
+    }
+    .error-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .error-grid1 {
+      padding: 5%;
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .error-image{
+      margin-top: 10%;
+    }
+  
+  </style>
+{% endblock %}
