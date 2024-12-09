@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controller;
 
@@ -6,61 +6,71 @@ use App\Entity\Reservation;
 use App\Entity\Event;
 use App\Entity\Location;
 use App\Entity\Equipement;
-
-
+use App\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\ReservationType;
-use Symfony\Component\Form\FormBuilderInterface; // Pour créer et manipuler des formulaires
-use Symfony\Component\Form\Extension\Core\Type\TextType; // Pour le type de champ texte
-use Symfony\Component\Form\Extension\Core\Type\SubmitType; // Pour les boutons de soumission
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType; // Pour les champs de type choix (par exemple, une liste déroulante)
-use Symfony\Component\Form\Extension\Core\Type\DateType; // Pour les champs de type date
-use Symfony\Component\Form\FormTypeInterface; // Pour la déclaration du type de formulaire
-use Symfony\Component\Form\FormBuilder;
-
 
 class ReservationController extends AbstractController
 {
     #[Route('/reservation/new', name: 'app_reservation')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-      
-        $reservation = new Reservation();
+        // Récupère l'utilisateur connecté
+        $user = $this->getUser(); // Symfony prend ici l'utilisateur de l'application
 
+        // Créez une nouvelle réservation
+        $reservation = new Reservation();
+        
+        // Associez l'utilisateur à la réservation en utilisant setUsers()
+        $reservation->setUsers($user);
+
+        // Récupérer les événements, lieux et équipements
         $events = $entityManager->getRepository(Event::class)->findAll();
         $locations = $entityManager->getRepository(Location::class)->findAll();
         $equipments = $entityManager->getRepository(Equipement::class)->findAll();
 
-
+        // Créer le formulaire avec les options
         $form = $this->createForm(ReservationType::class, $reservation, [
-            'events' => $entityManager->getRepository(Event::class)->findAll(),
-            'locations' => $entityManager->getRepository(Location::class)->findAll(),
-            'equipements' => $entityManager->getRepository(Equipement::class)->findAll(),
+            'user' => $user,  // Passe l'utilisateur connecté au formulaire
+            'events' => $events,
+            'locations' => $locations,
+            'equipements' => $equipments,
         ]);
 
+        // Gérer la soumission du formulaire
         $form->handleRequest($request);
 
-        if($form->isSubmitted()&& $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            
+            // Affecter l'utilisateur connecté à la réservation
+            $reservation->setUsers($user); // Assurez-vous d'utiliser `setUsers()`
 
+            // Affecter le prix de la réservation en fonction de la catégorie choisie
             if ($data->getReservationCategory() === 'event' && $data->getEvent()) {
-                $reservation->setReservationPrice($data->getEvent()->getPrice());
+                $reservation->setReservationPrice($data->getEvent()->getEventPrice());
             } elseif ($data->getReservationCategory() === 'location' && $data->getLocation()) {
-                $reservation->setReservationPrice($data->getLocation()->getPrice());
+                $reservation->setReservationPrice($data->getLocation()->getLocationPrice());
             } elseif ($data->getReservationCategory() === 'equipement' && $data->getEquipement()) {
-                $reservation->setReservationPrice($data->getEquipement()->getPrice());
+                $reservation->setReservationPrice($data->getEquipement()->getEquipementPrice());
             }
-        
+
+            // Enregistrer la réservation en base de données
+            $entityManager->persist($reservation);
+            $entityManager->flush();
+
+            // Ajouter un message flash et rediriger
+            $this->addFlash('success', 'Réservation créée avec succès.');
+            return $this->redirectToRoute('reservation_list');
         }
 
         return $this->render('reservation/new.html.twig', [
             'form' => $form->createView(),
         ]);
-
     }
 
     #[Route('/reservation', name: 'reservation_list')]
@@ -69,26 +79,24 @@ class ReservationController extends AbstractController
         // Récupérer les réservations de l'utilisateur connecté
         $user = $this->getUser();
         $reservations = $user ? $user->getReservation() : [];
-    
-        // Si vous souhaitez afficher un formulaire pour effectuer une nouvelle réservation ici :
+
+        // Créez un formulaire pour effectuer une nouvelle réservation
         $reservation = new Reservation();
-    
-        // Créez un formulaire basé sur votre type de formulaire existant
         $form = $this->createForm(ReservationType::class, $reservation);
-    
+
         // Traitez la soumission du formulaire
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // Associez l'utilisateur à la réservation
             if ($user) {
-                $reservation->setUser($user);
+                $reservation->setUsers($user); // Utilisez `setUsers()`
             }
-    
+
             // Gestion de la catégorie de réservation
             $category = $reservation->getReservationCategory();
             if ($category === 'event') {
                 $event = $form->get('event')->getData();
-                $reservation->getEventName($event);
+                $reservation->setEvent($event);
                 $reservation->setLocation(null);
                 $reservation->setEquipement(null);
             } elseif ($category === 'location') {
@@ -102,21 +110,20 @@ class ReservationController extends AbstractController
                 $reservation->setEvent(null);
                 $reservation->setLocation(null);
             }
-    
+
             // Enregistrez la réservation dans la base de données
             $entityManager->persist($reservation);
             $entityManager->flush();
-    
-            // Ajoutez un message flash et redirigez
+
+            // Ajouter un message flash et redirigez
             $this->addFlash('success', 'Votre réservation a été enregistrée avec succès.');
             return $this->redirectToRoute('reservation_list');
         }
-    
+
         // Rendre la liste des réservations et le formulaire
         return $this->render('reservation/list.html.twig', [
             'reservations' => $reservations,
             'form' => $form->createView(),
         ]);
     }
-    
 }

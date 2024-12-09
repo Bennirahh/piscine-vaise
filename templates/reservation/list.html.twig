@@ -15,12 +15,16 @@
             </tr>
         </thead>
         <tbody>
+
             {% for reservation in reservations %}
                 <tr>
+                        <td>{{ reservation.users.UserName }}  {{ reservation.users.UserFirstname }}</td>
+
                     <td>{{ reservation.reservationCategory }}</td>
                     <td>{{ reservation.reservationDate|date('d/m/Y H:i') }}</td>
                     <td>{{ reservation.reservationPeaopleNumber }}</td>
                     <td>{{ reservation.reservationPrice }}€</td>
+                    
                 </tr>
             {% else %}
                 <tr>

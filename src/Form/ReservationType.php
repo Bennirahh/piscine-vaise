@@ -2,11 +2,12 @@
 
 namespace App\Form;
 
-
 use App\Entity\Reservation;
 use App\Entity\Event;
 use App\Entity\Location;
 use App\Entity\Equipement;
+use App\Entity\Users;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,6 +16,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+
 
 class ReservationType extends AbstractType
 {
@@ -23,8 +26,16 @@ class ReservationType extends AbstractType
         $equipements = $options['equipements'] ?? [];
         $locations = $options['locations'] ?? [];
         $events = $options['events'] ?? [];
+        $user = $options['user'];  // Cette ligne récupère l'utilisateur passé au formulaire
+
 
         $builder
+
+        ->add('user', HiddenType::class, [
+            'data' => $user ? $user->getUserName() : null,  // On passe l'ID de l'utilisateur connecté
+            'mapped' => false,  // Ne pas lier ce champ à une propriété de l'entité Reservation
+        ])
+
             ->add('reservationCategory', ChoiceType::class, [
                 'choices' => [
                     'Event' => 'event',
@@ -47,40 +58,47 @@ class ReservationType extends AbstractType
                 'currency' => 'EUR',
                 'required' => true,
             ])
-            // Ajoutez ici le champ 'event' en utilisant les événements passés dans les options
             ->add('event', ChoiceType::class, [
                 'choices' => $events,
                 'choice_label' => function (Event $event) {
-                    return $event->getEventName(); // Nom de l'événement
+                    return $event->getEventName(); // Le nom de l'événement
                 },
                 'choice_attr' => function (Event $event) {
-                    return ['data-price' => $event->getEventPrice()]; // Ajouter le prix dans l'attribut data-price
+                    return ['data-price' => $event->getEventPrice()]; // Le prix de l'événement
                 },
                 'placeholder' => 'Sélectionner un événement',
                 'required' => false,
             ]);
             
-        ;
 
-        // Ajouter un champ pour les lieux si la réservation concerne un lieu
         if ($locations) {
             $builder->add('location', ChoiceType::class, [
                 'choices' => $locations,
+                'choice_label' => function (Location $location) {
+                    return $location->getLocationName();
+                },
+                'choice_attr' => function (Location $location) {
+                    return ['data-price' => $location->getLocationPrice()];
+                },
                 'placeholder' => 'Sélectionner un lieu',
                 'required' => false,
             ]);
         }
 
-        // Ajouter un champ pour les équipements si la réservation concerne un équipement
         if ($equipements) {
             $builder->add('equipement', ChoiceType::class, [
                 'choices' => $equipements,
+                'choice_label' => function (Equipement $equipement) {
+                    return $equipement->getEquipementName();
+                },
+                'choice_attr' => function (Equipement $equipement) {
+                    return ['data-price' => $equipement->getEquipementPrice()];
+                },
                 'placeholder' => 'Sélectionner un équipement',
                 'required' => false,
             ]);
         }
 
-        // Bouton de soumission
         $builder->add('save', SubmitType::class, ['label' => 'Réserver']);
     }
 
@@ -91,6 +109,8 @@ class ReservationType extends AbstractType
             'equipements' => [],
             'locations' => [],
             'events' => [],
+            'user' => null, // Ajoutez ici un paramètre 'user'
+
         ]);
     }
 }

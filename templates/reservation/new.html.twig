@@ -4,7 +4,13 @@
 
 {% block body %}
 <h1>Créer une nouvelle réservation</h1>
-
+    {# Vérification si l'utilisateur est connecté et affichage de son nom #}
+    {% if app.user %}
+        <p>Bienvenue, {{ app.user.UserName }} !</p>
+    {% else %}
+        <p>Vous devez être connecté pour effectuer une réservation.</p>
+    {% endif %}
+    
 {{ form_start(form) }}
 
 <!-- Champ pour choisir le type de réservation -->
@@ -57,38 +63,55 @@
 {{ form_end(form) }}
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Récupérer les éléments nécessaires
-        var reservationCategoryField = document.getElementById("{{ form.reservationCategory.vars.id }}");
-        var eventSection = document.getElementById("eventSection");
-        var locationSection = document.getElementById("locationSection");
-        var equipementSection = document.getElementById("equipementSection");
+document.addEventListener('DOMContentLoaded', function() {
+    const reservationCategoryField = document.getElementById("{{ form.reservationCategory.vars.id }}");
+    const priceInput = document.querySelector('#{{ form.reservationPrice.vars.id }}');
+    
+    const eventSelect = document.querySelector('#{{ form.event.vars.id }}');
+    const locationSelect = document.querySelector('#{{ form.location.vars.id }}');
+    const equipementSelect = document.querySelector('#{{ form.equipement.vars.id }}');
 
-        // Fonction pour afficher ou masquer les sections en fonction de la catégorie sélectionnée
-        function toggleSections() {
-            var selectedCategory = reservationCategoryField.value;
-            
-            // Masquer toutes les sections par défaut
-            eventSection.style.display = 'none';
-            locationSection.style.display = 'none';
-            equipementSection.style.display = 'none';
-
-            // Afficher la section correspondante en fonction de la catégorie sélectionnée
-            if (selectedCategory === 'event') {
-                eventSection.style.display = 'block';
-            } else if (selectedCategory === 'location') {
-                locationSection.style.display = 'block';
-            } else if (selectedCategory === 'equipement') {
-                equipementSection.style.display = 'block';
-            }
+    function updatePrice(selectElement) {
+        if (selectElement) {
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const price = selectedOption.dataset.price || 0; // Récupérer le prix ou 0 par défaut
+            priceInput.value = price; // Mettre à jour le champ prix
         }
+    }
 
-        // Initialiser l'affichage en fonction de la catégorie pré-sélectionnée
-        toggleSections();
+    function toggleSections() {
+        const selectedCategory = reservationCategoryField.value;
 
-        // Ajouter un écouteur d'événement pour changer l'affichage lorsque l'utilisateur change la catégorie
-        reservationCategoryField.addEventListener('change', toggleSections);
-    });
+        // Cacher toutes les sections
+        document.getElementById('eventSection').style.display = 'none';
+        document.getElementById('locationSection').style.display = 'none';
+        document.getElementById('equipementSection').style.display = 'none';
+
+        // Afficher la section correspondante et mettre à jour le prix
+        if (selectedCategory === 'event') {
+            document.getElementById('eventSection').style.display = 'block';
+            updatePrice(eventSelect);
+        } else if (selectedCategory === 'location') {
+            document.getElementById('locationSection').style.display = 'block';
+            updatePrice(locationSelect);
+        } else if (selectedCategory === 'equipement') {
+            document.getElementById('equipementSection').style.display = 'block';
+            updatePrice(equipementSelect);
+        }
+    }
+
+    // Initialisation
+    toggleSections();
+
+    // Écouter les changements de catégorie
+    reservationCategoryField.addEventListener('change', toggleSections);
+
+    // Écouter les changements dans les champs spécifiques
+    if (eventSelect) eventSelect.addEventListener('change', () => updatePrice(eventSelect));
+    if (locationSelect) locationSelect.addEventListener('change', () => updatePrice(locationSelect));
+    if (equipementSelect) equipementSelect.addEventListener('change', () => updatePrice(equipementSelect));
+});
+
 </script>
 
 <script>
