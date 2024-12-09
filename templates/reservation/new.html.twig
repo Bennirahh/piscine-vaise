@@ -3,130 +3,134 @@
 {% block title %}Réservation{% endblock %}
 
 {% block body %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Créer une nouvelle réservation</title>
-    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
-    <style>
-        body {
-            background-image: url('{{ asset('img/background2.jpg') }}');
-            background-size: cover;
-            background-attachment: fixed;
+<h1>Créer une nouvelle réservation</h1>
+    {# Vérification si l'utilisateur est connecté et affichage de son nom #}
+    {% if app.user %}
+        <p>Bienvenue, {{ app.user.UserName }} !</p>
+    {% else %}
+        <p>Vous devez être connecté pour effectuer une réservation.</p>
+    {% endif %}
+    
+{{ form_start(form) }}
+
+<!-- Champ pour choisir le type de réservation -->
+<div class="form-group">
+    {{ form_label(form.reservationCategory) }}
+    {{ form_widget(form.reservationCategory) }}
+</div>
+
+<!-- Champ pour la date de réservation -->
+<div class="form-group">
+    {{ form_label(form.reservationDate) }}
+    {{ form_widget(form.reservationDate) }}
+</div>
+
+<!-- Champ pour le nombre de personnes -->
+<div class="form-group">
+    {{ form_label(form.reservationPeaopleNumber) }}
+    {{ form_widget(form.reservationPeaopleNumber) }}
+</div>
+
+<!-- Champ pour le prix -->
+<div class="form-group">
+    {{ form_label(form.reservationPrice) }}
+    {{ form_widget(form.reservationPrice) }}
+</div>
+
+<!-- Section pour l'événement (affichée uniquement si "Event" est sélectionné) -->
+<div id="eventSection" class="form-group" style="display: none;">
+    {{ form_label(form.event) }}
+    {{ form_widget(form.event) }}
+</div>
+
+<!-- Section pour le lieu (affichée uniquement si "Location" est sélectionné) -->
+<div id="locationSection" class="form-group" style="display: none;">
+    {{ form_label(form.location) }}
+    {{ form_widget(form.location) }}
+</div>
+
+<!-- Section pour l'équipement (affichée uniquement si "Equipement" est sélectionné) -->
+<div id="equipementSection" class="form-group" style="display: none;">
+    {{ form_label(form.equipement) }}
+    {{ form_widget(form.equipement) }}
+</div>
+
+<!-- Bouton de soumission -->
+<div class="form-group">
+    {{ form_widget(form.save) }}
+</div>
+
+{{ form_end(form) }}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const reservationCategoryField = document.getElementById("{{ form.reservationCategory.vars.id }}");
+    const priceInput = document.querySelector('#{{ form.reservationPrice.vars.id }}');
+    
+    const eventSelect = document.querySelector('#{{ form.event.vars.id }}');
+    const locationSelect = document.querySelector('#{{ form.location.vars.id }}');
+    const equipementSelect = document.querySelector('#{{ form.equipement.vars.id }}');
+
+    function updatePrice(selectElement) {
+        if (selectElement) {
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const price = selectedOption.dataset.price || 0; // Récupérer le prix ou 0 par défaut
+            priceInput.value = price; // Mettre à jour le champ prix
         }
-        .profile-page {
-            padding: 20px;
-            border-radius: 10px;
+    }
+
+    function toggleSections() {
+        const selectedCategory = reservationCategoryField.value;
+
+        // Cacher toutes les sections
+        document.getElementById('eventSection').style.display = 'none';
+        document.getElementById('locationSection').style.display = 'none';
+        document.getElementById('equipementSection').style.display = 'none';
+
+        // Afficher la section correspondante et mettre à jour le prix
+        if (selectedCategory === 'event') {
+            document.getElementById('eventSection').style.display = 'block';
+            updatePrice(eventSelect);
+        } else if (selectedCategory === 'location') {
+            document.getElementById('locationSection').style.display = 'block';
+            updatePrice(locationSelect);
+        } else if (selectedCategory === 'equipement') {
+            document.getElementById('equipementSection').style.display = 'block';
+            updatePrice(equipementSelect);
         }
-    </style>
-</head>
-<body>
-    <main class="profile-page">
-        <section class="relative py-16">
-            <div class="container mx-auto px-4">
-                <h1 class="text-4xl font-semibold leading-normal mb-6 text-white text-center">Réserver un équipement ou un service</h1>
-                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg p-8">
-                    {% if app.user %}
-                        <p class="text-gray-700 mb-4">Bienvenue, {{ app.user.UserName }} !</p>
-                    {% else %}
-                        <p class="text-gray-700 mb-4">Vous devez être connecté pour effectuer une réservation.</p>
-                    {% endif %}
-                    
-                    {{ form_start(form) }}
+    }
 
-                    <div class="mb-4">
-                        {{ form_label(form.reservationCategory, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.reservationCategory, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
+    // Initialisation
+    toggleSections();
 
-                    <div class="mb-4">
-                        {{ form_label(form.reservationDate, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.reservationDate, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
+    // Écouter les changements de catégorie
+    reservationCategoryField.addEventListener('change', toggleSections);
 
-                    <div class="mb-4">
-                        {{ form_label(form.reservationPeaopleNumber, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.reservationPeaopleNumber, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
+    // Écouter les changements dans les champs spécifiques
+    if (eventSelect) eventSelect.addEventListener('change', () => updatePrice(eventSelect));
+    if (locationSelect) locationSelect.addEventListener('change', () => updatePrice(locationSelect));
+    if (equipementSelect) equipementSelect.addEventListener('change', () => updatePrice(equipementSelect));
+});
 
-                    <div class="mb-4">
-                        {{ form_label(form.reservationPrice, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.reservationPrice, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', 'readonly': 'readonly'}}) }}
-                    </div>
+</script>
 
-                    <div id="eventSection" class="mb-4" style="display: none;">
-                        {{ form_label(form.event, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.event, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const eventSelect = document.querySelector('#form_event'); // Vérifiez que l'ID du champ 'event' est correct
+    const priceInput = document.querySelector('#form_reservationPrice'); // Vérifiez que l'ID du champ 'prix' est correct
 
-                    <div id="locationSection" class="mb-4" style="display: none;">
-                        {{ form_label(form.location, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.location, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
+    // Vérifier si l'élément 'eventSelect' existe avant d'ajouter l'événement
+    if (eventSelect) {
+        eventSelect.addEventListener('change', function() {
+            const selectedOption = eventSelect.options[eventSelect.selectedIndex];
+            const price = selectedOption.dataset.price || 0; // Obtenir le prix depuis l'attribut data-price
+            priceInput.value = price; // Mettre à jour la valeur du champ prix
+        });
+    }
+});
 
-                    <div id="equipementSection" class="mb-4" style="display: none;">
-                        {{ form_label(form.equipement, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.equipement, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
+</script>
 
-                    <div class="flex items-center justify-between">
-                        {{ form_widget(form.save, {'attr': {'class': 'bg-yellow-200 hover:bg-yellow-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
 
-                    {{ form_end(form) }}
-                </div>
-            </div>
-        </section>
-    </main>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const reservationCategoryField = document.getElementById("{{ form.reservationCategory.vars.id }}");
-        const priceInput = document.querySelector('#{{ form.reservationPrice.vars.id }}');
-        
-        const eventSelect = document.querySelector('#{{ form.event.vars.id }}');
-        const locationSelect = document.querySelector('#{{ form.location.vars.id }}');
-        const equipementSelect = document.querySelector('#{{ form.equipement.vars.id }}');
-
-        function updatePrice(selectElement) {
-            if (selectElement) {
-                const selectedOption = selectElement.options[selectElement.selectedIndex];
-                const price = selectedOption.dataset.price || 0;
-                priceInput.value = price;
-            }
-        }
-
-        function toggleSections() {
-            const selectedCategory = reservationCategoryField.value;
-            document.getElementById('eventSection').style.display = 'none';
-            document.getElementById('locationSection').style.display = 'none';
-            document.getElementById('equipementSection').style.display = 'none';
-
-            if (selectedCategory === 'event') {
-                document.getElementById('eventSection').style.display = 'block';
-                updatePrice(eventSelect);
-            } else if (selectedCategory === 'location') {
-                document.getElementById('locationSection').style.display = 'block';
-                updatePrice(locationSelect);
-            } else if (selectedCategory === 'equipement') {
-                document.getElementById('equipementSection').style.display = 'block';
-                updatePrice(equipementSelect);
-            }
-        }
-
-        toggleSections();
-
-        reservationCategoryField.addEventListener('change', toggleSections);
-        if (eventSelect) eventSelect.addEventListener('change', () => updatePrice(eventSelect));
-        if (locationSelect) locationSelect.addEventListener('change', () => updatePrice(locationSelect));
-        if (equipementSelect) equipementSelect.addEventListener('change', () => updatePrice(equipementSelect));
-    });
-    </script>
-
-</body>
-</html>
 {% endblock %}
