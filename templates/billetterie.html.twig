@@ -71,16 +71,28 @@
             </div>
         </div>
 
+
+        {# ICI C'EST LES EVENEMENT ( PREMIÈRE LIGNE ) #}
+
         <div class="billetterie-reservation">
             <div class="billetterie-reservation-case">
-                <img src="../img/billetterie-basket.png" alt="">
-                <H2>Basket</H2>
-                <p>Le terrain de basket sur mesure, rien que pour vous. Chaque créneau offre un moment de jeu
-                    unique,
-                    adapté à vos besoins.</p>
+                {% for event in events %}
+
+                    
+
+                <img src="{{ asset('uploads/images/' ~ event.image) }}" alt="Event Image" style="width: 200px; height: 200px;">
+                <H2>{{event.eventName}}</H2>
+                <p>{{ event.description }}</p>
+
                 <button class="billetterie-tarifs-acheter">Réserver</button>
+                {% endfor %}    
+                
             </div>
-            <div class="billetterie-reservation-case">
+
+
+
+
+           {#  <div class="billetterie-reservation-case">
                 <img src="../img/billetterie-tennis.png" alt="">
                 <H2>Tennis</H2>
                 <p>Votre court de tennis, entièrement réservé. Profitez d’un espace conçu pour un jeu sur mesure à
@@ -90,8 +102,7 @@
             <div class="billetterie-reservation-case">
                 <img src="../img/billetterie-foot.png" alt="">
                 <H2>Football</H2>
-                <p>Un terrain de foot 6v6 réservé à votre équipe. Vivez une expérience de jeu dynamique et personnalisée
-                    à chaque réservation.</p>
+
                 <button class="billetterie-tarifs-acheter">Réserver</button>
             </div>
             <div class="billetterie-reservation-case">
@@ -101,8 +112,40 @@
                     prêt pour le combat.</p>
                 <button class="billetterie-tarifs-acheter">Réserver</button>
             </div>
-        </div>
+        </div> #}
     </div>
+        
+        <div class="billetterie-reservation">
+            <div class="billetterie-reservation-case">
+                {% for location in locations %}
+
+                    
+                <img src="{{ asset('uploads/images/' ~ location.image) }}" alt="Event Image" style="width: 200px; height: 200px;">
+                <H2>{{location.locationName}}</H2>
+                <p>{{ location.description }}</p>
+
+                <button class="billetterie-tarifs-acheter">Réserver</button>
+                {% endfor %}    
+                
+            </div>
+
+        </div>        
+        
+        <div class="billetterie-reservation">
+            <div class="billetterie-reservation-case">
+                {% for equipement in equipements %}
+
+                    
+                <img src="{{ asset('uploads/images/' ~ equipement.images) }}" alt="Event Image" style="width: 200px; height: 200px;">
+                <H2>{{equipement.equipementName}}</H2>
+                <p>{{ equipement.description }}</p>
+
+                <button class="billetterie-tarifs-acheter">Réserver</button>
+                {% endfor %}    
+                
+            </div>
+
+        </div>
 
 
 
