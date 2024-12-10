@@ -12,76 +12,83 @@
     <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
-    <style>
-        body {
-            background-image: url('{{ asset('img/background2.jpg') }}');
-            background-size: cover;
-            background-attachment: fixed;
-        }
-        .profile-page {
-            padding: 20px;
-            border-radius: 10px;
-        }
-    </style>
 </head>
-<body>
-    <main class="profile-page">
-        <section class="relative py-16">
-            <div class="container mx-auto px-4">
-                <h1 class="text-4xl font-semibold leading-normal mb-6 text-white text-center">Réserver un équipement ou un service</h1>
-                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg p-8">
-                    {% if app.user %}
-                        <p class="text-gray-700 mb-4">Bienvenue, {{ app.user.UserName }} !</p>
-                    {% else %}
-                        <p class="text-gray-700 mb-4">Vous devez être connecté pour effectuer une réservation.</p>
-                    {% endif %}
-                    
-                    {{ form_start(form) }}
+<body class="bg-white">
 
-                    <div class="mb-4">
-                        {{ form_label(form.reservationCategory, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.reservationCategory, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
+<div class="p-16">
+<div class="grid grid-cols-3">
+<div class="grid grid-cols-5 text-center">
+ <img src="../img/reservation-check.png" alt="" class="w-[20%] mx-auto">
+ <p class="text-green-600">Panier</p>
+ <div class="border-green-600 border-b-2 my-auto"></div>
+<img src="../img/reservation-check-gris.png" alt="" class="w-[20%] mx-auto">
+ <p>Vérification</p>
+</div>
+<div></div>
+<div></div>
+</div>
 
-                    <div class="mb-4">
-                        {{ form_label(form.reservationDate, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.reservationDate, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
-
-                    <div class="mb-4">
-                        {{ form_label(form.reservationPeaopleNumber, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.reservationPeaopleNumber, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
-
-                    <div class="mb-4">
-                        {{ form_label(form.reservationPrice, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.reservationPrice, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', 'readonly': 'readonly'}}) }}
-                    </div>
-
-                    <div id="eventSection" class="mb-4" style="display: none;">
-                        {{ form_label(form.event, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.event, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
-
-                    <div id="locationSection" class="mb-4" style="display: none;">
-                        {{ form_label(form.location, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.location, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
-
-                    <div id="equipementSection" class="mb-4" style="display: none;">
-                        {{ form_label(form.equipement, null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                        {{ form_widget(form.equipement, {'attr': {'class': 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
-
-                    <div class="flex items-center justify-between">
-                        {{ form_widget(form.save, {'attr': {'class': 'bg-yellow-200 hover:bg-yellow-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'}}) }}
-                    </div>
-
-                    {{ form_end(form) }}
-                </div>
-            </div>
-        </section>
-    </main>
+<div class="pl-16 pt-10">
+<h1 class="text-xl font-bold">Détails de la commande</h1>
+</div>
+<div class="grid grid-cols-3 gap-4 pl-16 pr-[15%] pt-10">
+  <div class="col-span-2">
+<div class="mb-4">
+    <label class="font-bold" for="">Prénom</label>
+    <div class="border-2 border-[#B6BAAC] p-2 rounded-lg">
+    <p>{{ app.user.UserName }}</p>
+    </div>
+</div>
+<div class="mb-4">
+    <label class="font-bold" for="">Nom</label>
+    <div class="border-2 border-[#B6BAAC] p-2 rounded-lg">
+    <p>{{ app.user.UserFirstName }}</p>
+    </div>
+</div>
+<div class="mb-4">
+    <label class="font-bold" for="">Email</label>
+    <div class="border-2 border-[#B6BAAC] p-2 rounded-lg">
+    <p>{{ app.user.email }}</p>
+    </div>
+</div>
+    {{ form_start(form) }}
+      <div class="mb-4">
+      <label class="font-bold" for="">Catégorie de la reservation</label>
+        {{ form_widget(form.reservationCategory, {'attr': {'class': 'border-2 border-[#B6BAAC] p-2 rounded-lg w-full'}}) }}
+      </div>
+      <div id="eventSection" class="mb-4" style="display: none;">
+      <label class="font-bold" for="">Evennement</label>
+        {{ form_widget(form.event, {'attr': {'class': 'border-2 border-[#B6BAAC] p-2 rounded-lg w-full'}}) }}
+      </div>
+      <div id="locationSection" class="mb-4" style="display: none;">
+            <label class="font-bold" for="">Lieu</label>
+        {{ form_widget(form.location, {'attr': {'class': 'border-2 border-[#B6BAAC] p-2 rounded-lg w-full'}}) }}
+      </div>
+      <div id="equipementSection" class="mb-4" style="display: none;">
+            <label class="font-bold" for="">Equipement</label>
+        {{ form_widget(form.equipement, {'attr': {'class': 'border-2 border-[#B6BAAC] p-2 rounded-lg w-full'}}) }}
+      </div>
+      <div class="mb-4">
+      <label class="font-bold" for="">Nombre de personnes</label>
+        {{ form_widget(form.reservationPeaopleNumber, {'attr': {'class': 'border-2 border-[#B6BAAC] p-2 rounded-lg w-full'}}) }}
+      </div>
+      <div class="mb-4">
+      <label class="font-bold" for="">Date de réservation</label>
+        {{ form_widget(form.reservationDate, {'attr': {'class': 'border-2 border-[#B6BAAC] p-2 rounded-lg w-full'}}) }}
+      </div>
+  </div>
+  <div class="col-span-1 pl-16">
+    <!-- Le bouton d'envoi ici prendra une colonne -->
+    <div class="mb-4">
+          <label class="font-bold" for="">Total</label>
+        {{ form_widget(form.reservationPrice, {'attr': {'class': 'p-2 rounded-lg w-full', 'readonly': 'readonly'}}) }}
+      </div>
+    <div class="flex items-center justify-between">
+      {{ form_widget(form.save, {'attr': {'class': 'bg-green-600 p-2 text-white rounded-lg mx-auto w-full'}}) }}
+    </div>
+    {{ form_end(form) }}
+  </div>
+</div>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
