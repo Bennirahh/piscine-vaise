@@ -99,7 +99,7 @@ class ReservationType extends AbstractType
             ]);
         }
 
-        $builder->add('save', SubmitType::class, ['label' => 'Réserver']);
+        $builder->add('save', SubmitType::class, ['label' => 'Procéder au paiement']);
     }
 
     public function configureOptions(OptionsResolver $resolver)
