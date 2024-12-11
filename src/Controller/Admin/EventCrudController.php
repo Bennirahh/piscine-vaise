@@ -14,6 +14,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use App\Entity\Event;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+
+
 class EventCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
@@ -28,6 +32,16 @@ class EventCrudController extends AbstractCrudController
         yield IntegerField::new('eventCapacity', 'Capacity');
         yield IntegerField::new('eventPrice', 'Price');
         yield DateField::new('eventDate', 'Date de evenement');
+        yield ImageField::new('image', 'Image')
+        ->setBasePath('uploads/images') // Affiche les images dans 'public/uploads/images'
+        ->setUploadDir('public/uploads/images') //
+        ->setUploadedFileNamePattern('[randomhash].[extension]')
+        ->setRequired(false);
+        yield TextareaField::new('description', 'Description')
+        ->setHelp('help text')
+        ->setFormTypeOptions([
+            'attr' => ['class' => 'ckeditor'], // Active CKEditor si vous l'avez installé
+        ]);
 
         yield AssociationField::new('location')
         ->setLabel('Lieu')
