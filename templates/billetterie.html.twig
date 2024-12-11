@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
 </head>
 
-<body {% if app.request.get('_route')=='billetterie' %}style="background-color: white;" {% elseif
-    app.request.get('_route') in ['login', 'register' ] %}style="background-image: url('../img/background1.jpg');" {%
-    endif %}>
+<body style="background-color: white;" >
 
     {% block body %}
     <div class="page-billetterie">
@@ -151,3 +149,4 @@
     {% endblock %}
 
 </html>
+</body>
