@@ -32,7 +32,7 @@ class ReservationController extends AbstractController
         $events = $entityManager->getRepository(Event::class)->findAll();
         $locations = $entityManager->getRepository(Location::class)->findAll();
         $equipments = $entityManager->getRepository(Equipement::class)->findAll();
-
+        
         // Créer le formulaire avec les options
         $form = $this->createForm(ReservationType::class, $reservation, [
             'user' => $user,  // Passe l'utilisateur connecté au formulaire
@@ -46,18 +46,24 @@ class ReservationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            
-            // Affecter l'utilisateur connecté à la réservation
-            $reservation->setUsers($user); // Assurez-vous d'utiliser `setUsers()`
+            $peopleNumber = $data->getReservationPeaopleNumber(); // Récupérer le nombre de personnes
 
-            // Affecter le prix de la réservation en fonction de la catégorie choisie
+            $totalPrice = 0; // Initialiser le prix total
+
+            // Calcul du prix total en fonction de la catégorie et du nombre de personnes
             if ($data->getReservationCategory() === 'event' && $data->getEvent()) {
-                $reservation->setReservationPrice($data->getEvent()->getEventPrice());
+                $pricePerPerson = $data->getEvent()->getEventPrice();
+                $totalPrice = $pricePerPerson * $peopleNumber;
             } elseif ($data->getReservationCategory() === 'location' && $data->getLocation()) {
-                $reservation->setReservationPrice($data->getLocation()->getLocationPrice());
+                $pricePerPerson = $data->getLocation()->getLocationPrice();
+                $totalPrice = $pricePerPerson * $peopleNumber;
             } elseif ($data->getReservationCategory() === 'equipement' && $data->getEquipement()) {
-                $reservation->setReservationPrice($data->getEquipement()->getEquipementPrice());
+                $pricePerPerson = $data->getEquipement()->getEquipementPrice();
+                $totalPrice = $pricePerPerson * $peopleNumber;
             }
+
+            // Affecter le prix total à la réservation
+            $reservation->setReservationPrice($totalPrice);
 
             // Enregistrer la réservation en base de données
             $entityManager->persist($reservation);
