@@ -97,23 +97,8 @@
 				</div>
 			</div>
 
-					<div class="accueil-evennements">
-						<div class="accueil-evennements-cases-titre">
-							<H2>Événnements à venir</H2>
-							<p>Ne ratez pas l'heure.</p>
-							<div class="accueil-evennements-cases">
-								<p class="accueil-evennements-cases-date">10 Janvier 10h à 12h</p>
-								<p class="accueil-evennements-cases-nom">Cours de Football</p>
-								<p class="accueil-evennements-cases-description">Participez bla bla bla</p>
-							</div>
-						</div>
-						<section class="relative py-8 sm:p-8">
-							<iframe src="
-								https://calendar.google.com/calendar/embed?src=pulsecenter69%40gmail.com&ctz=UTC" class="w-full h-[600px] border-0 rounded-lg" frameborder="0" scrolling="no"></iframe>
-						</section>
-					</div>
-
 					<div class="accueil-infos">
+					{{ form_start(form) }}
 								<div class="accueil-contact" id="contactSection">
 									<H1>Contactez-nous</H1>
 									<p>Nous adoptons une démarche itérative et collaborative afin de valider vos hypothèses rapidement et de
@@ -121,36 +106,49 @@
 
 									<div>
 										<form>
+											
 											<div class="accueil-form-contact">
-												<div>
-													<label for="">Prénom</label>
-													<br>
-													<input style="width: 80%;" class="accueil-contact-input" type="text" placeholder="Voulzy">
-												</div>
-												<div>
-													<label for="">Nom</label>
-													<br>
-													<input style="width: 100%;" class="accueil-contact-input" type="text" placeholder="Laurent">
-												</div>
-												<div class="accueil-contact-form2">
-													<label for="">Votre Email</label>
-													<br>
-													<input style="width: 80%;" class="accueil-contact-input" type="text" placeholder="Exemple@exemple.fr">
-												</div>
-												<div class="accueil-contact-form2">
-													<label for="">Numéro de téléphone</label>
-													<br>
-													<input style="width: 100%;" class="accueil-contact-input" type="text" placeholder="0x.xx.xx.xx.xx">
-												</div>
-											</div>
-											<div style="text-align: left; margin-top: 5%;">
-												<label for="">Votre message</label>
-												<br>
-												<textarea style="width: 100%;" name="" class="accueil-contact-input" placeholder="Laisser un commentaire"></textarea>
-											</div>
-											<div>
-											<input type="submit" style="margin-top: 5%; background-color: #828F23; padding:2%; border-radius: 5px; color: white;" value="Envoyer le message">
-										</div>
+    <div>
+        {# Utilisation de form_row pour le champ prenom avec placeholder #}
+        <label for="prenom">{{ form_label(form.prenom) }}</label>
+        <br>
+        {{ form_widget(form.prenom, {'attr': {'class': 'accueil-contact-input', 'style': 'width: 80%;', 'placeholder': 'Voulzy'}}) }}
+    </div>
+    <div>
+        {# Utilisation de form_row pour le champ nom avec placeholder #}
+        <label for="nom">{{ form_label(form.nom) }}</label>
+        <br>
+        {{ form_widget(form.nom, {'attr': {'class': 'accueil-contact-input', 'style': 'width: 100%;', 'placeholder': 'Laurent'}}) }}
+    </div>
+    <div class="accueil-contact-form2">
+        {# Utilisation de form_row pour le champ email avec placeholder #}
+        <label for="email">{{ form_label(form.email) }}</label>
+        <br>
+        {{ form_widget(form.email, {'attr': {'class': 'accueil-contact-input', 'style': 'width: 80%;', 'placeholder': 'Exemple@exemple.fr'}}) }}
+    </div>
+    <div class="accueil-contact-form2">
+        {# Utilisation de form_row pour le champ téléphone avec placeholder #}
+        <label for="telephone">{{ form_label(form.telephone) }}</label>
+        <br>
+        {{ form_widget(form.telephone, {'attr': {'class': 'accueil-contact-input', 'style': 'width: 100%;', 'placeholder': '0x.xx.xx.xx.xx'}}) }}
+    </div>
+</div>
+
+<div style="text-align: left; margin-top: 5%;">
+    {# Utilisation de form_label et form_widget pour le champ message avec placeholder #}
+    <label for="message">{{ form_label(form.message) }}</label>
+    <br>
+    {{ form_widget(form.message, {'attr': {'class': 'accueil-contact-input', 'style': 'width: 100%;', 'placeholder': 'Laisser un commentaire'}}) }}
+</div>
+
+<div>
+    {# Utilisation de form_row pour le bouton de soumission #}
+    <input type="submit" style="margin-top: 5%; background-color: #828F23; padding:2%; border-radius: 5px; color: white;" value="Envoyer le message">
+</div>
+
+{{ form_end(form) }}
+
+
 									</form>
 								</div>
 
@@ -185,6 +183,22 @@
 	</html>
 </div>
 
+<!-- Pop-up de confirmation -->
+        {% for message in app.flashes('success') %}
+            <div id="popup" class="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
+                <div class="bg-white p-6 rounded shadow-lg">
+                    <h2 class="text-lg font-bold">Message envoyé</h2>
+                    <p>{{ message }}</p>
+                    <button onclick="closePopup()" class="mt-4 bg-green-500 text-white px-4 py-2 rounded">Fermer</button>
+                </div>
+            </div>
+        {% endfor %}
 
+        <script>
+            // Fonction pour fermer la pop-up
+            function closePopup() {
+                document.getElementById('popup').style.display = 'none';
+            }
+        </script>
 <script src="{{ asset('js/theme.js') }}"></script>
 {% endblock %}
