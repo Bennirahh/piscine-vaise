@@ -80,7 +80,7 @@
             <div class="billetterie-reservation-case">
                 {% for event in events %}
                 <div style="padding-left: 5%; padding-right: 5%;">
-                <img src="{{ asset('uploads/images/' ~ event.image) }}" alt="Event Image" style="width: auto; height: 50%;">
+                <img src="{{ asset('uploads/images/' ~ event.image) }}" alt="Event Image" style="width: auto; height: 200px;">
                 <H2>{{event.eventName}}</H2>
                 <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%">
                 <p>{{ event.description }}</p>
@@ -100,7 +100,7 @@
             <div class="billetterie-reservation-case">
                 {% for location in locations %}
                 <div style="padding-left: 5%; padding-right: 5%;">
-                <img src="{{ asset('uploads/images/' ~ location.image) }}" alt="Event Image" style="width: auto; height: 50%;">
+                <img src="{{ asset('uploads/images/' ~ location.image) }}" alt="Event Image" style="width: auto; height: 200px;">
                 <H2>{{location.locationName}}</H2>
                 <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%">
                 <p>{{ location.description }}</p>
@@ -121,7 +121,7 @@
             <div class="billetterie-reservation-case">
                 {% for equipement in equipements %}
                 <div style="padding-left: 5%; padding-right: 5%;">
-                <img src="{{ asset('uploads/images/' ~ equipement.images) }}" alt="Event Image" style="width: auto; height: 50%;">
+                <img src="{{ asset('uploads/images/' ~ equipement.images) }}" alt="Event Image" style="width: auto; height: 200px;">
                 <H2>{{equipement.equipementName}}</H2>
                 <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%">
                 <p>{{ equipement.description }}</p>
