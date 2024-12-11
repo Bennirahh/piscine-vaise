@@ -10,7 +10,11 @@
 					<li>
 						<a class="header-liens" href="{{ path('billetterie') }}">Billetterie</a>
 					</li>
-					<li><img width="60%" src="../img/Logo1.png"></li>
+					<li>
+					<a class="footer-lien" href="{{ path('accueil') }}">
+					<img class="header-logo1" src="../img/Logo1.png" alt="">
+					</a>
+					</li>
 					<li>
 						<a class="header-liens" href="{{ path('login') }}">Contact</a>
 					</li>
@@ -27,6 +31,7 @@
 					<div class="footer-case">
 						<a class="footer-lien" href="{{ path('login') }}">Contact</a>
 						<a class="footer-lien" href="{{ path('rgpd') }}">Politique de confidentialité</a>
+						<a class="footer-lien" href="{{ path('credits') }}">Crédits</a>
 					</div>
 					<div class="footer-case footer-reseau">
 						<a href="https://fr-fr.facebook.com/"><img src="../img/footer-facebook.png" alt=""></a>
@@ -34,7 +39,9 @@
 						<a href="https://www.youtube.com/"><img src="../img/footer-youtube.png" alt=""></a>
 					</div>
 					<div class="footer-case">
+						<a class="footer-lien" href="{{ path('accueil') }}">
 						<img class="footer-logo1" src="../img/Logo1.png" alt="">
+						</a>
 					</div>
 				</div>
 				<p class="footer-copy">© 2024 WebPulse- Tous droits réservés</p>
