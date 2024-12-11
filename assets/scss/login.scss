@@ -111,7 +111,7 @@ body {
 
 .login-form-footer{
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr ;
 }
 
 .login-form-footer-logo{
@@ -121,10 +121,11 @@ body {
 
 .login-form-footer-logo img{
     margin-left: 5%;
-    margin-top: 65%;
+    margin-top: 15%;
 }
 
 .login-form-footer-logo a {
+    text-align: end;
     text-decoration: none;
     color: black;
     margin-top: 10%;
