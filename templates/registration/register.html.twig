@@ -9,7 +9,7 @@
 			<title>Register</title>
 			<link rel="stylesheet" href="{{ asset('css/theme.css') }}">
 		</head>
-		<body>
+		<body class="body-login-register">
 			<div class="page-register">
 				<div class="register-navbar">
 					<ul>
@@ -68,8 +68,7 @@
 							<p>Vous avez déjà un compte ?</p>
 							<div></div>
 							<div class="register-form-footer-logo">
-								<p>Connexion</p>
-								<img src="{{ asset('img/register-submit.png') }}">
+							<a href="{{ path('login') }}">Connexion</a>
 							</div>
 						</div>
 					</div>

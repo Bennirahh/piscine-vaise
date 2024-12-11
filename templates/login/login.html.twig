@@ -9,7 +9,7 @@
 		<title>Login</title>
 		<link rel="stylesheet" href="{{ asset('css/theme.css') }}">
 	</head>
-	<body>
+	<body class="body-login-register">
 		<div class="page-login">
 			<div class="login-navbar">
 				<ul>
@@ -57,7 +57,7 @@
 							<p>Vous n'avez pas de compte ?</p>
 							<div></div>
 							<div class="login-form-footer-logo">
-								<p>S'inscrire</p>
+							<a href="{{ path('app_register') }}">Créer un compte</a>
 								<img src="{{ asset('img/login-submit.png') }}">
 							</div>
 						</div>

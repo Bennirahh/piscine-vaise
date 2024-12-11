@@ -14,6 +14,10 @@ body {
     font-family: Montserrat;
 }
 
+.body-login-register{
+    background-image: url(../img/background1.jpg) ;
+}
+
 .page-register {
     padding-left: 5%;
     padding-right: 5%;
@@ -268,7 +272,12 @@ body {
     grid-template-columns: 2fr 1fr;
 }
 
+.register-form-footer-logo a {
+    text-decoration: none;
+    color: black;
+    margin-top: 10%;
+}
+
 .register-form-footer-logo img {
     margin-left: 5%;
-    margin-top: 65%;
 }
