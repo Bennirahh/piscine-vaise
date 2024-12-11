@@ -51,13 +51,6 @@ body {
     font-family: Inter;
 }
 
-.register-formulaire {
-    background-color: #E9EDDB;
-    padding: 10%;
-    margin: 5%;
-    border-radius: 8px;
-    height:75%;
-}
 
 .register-label {
     color: #4C5214;
@@ -123,7 +116,9 @@ body {
 .register-form-footer-logo img {
     margin-left: 5%;
     margin-top: 65%;
-}@font-face {
+}
+
+@font-face {
     font-family: Montserrat;
     src: url(../fonts/Montserrat-VariableFont_wght.ttf);
 }
@@ -175,7 +170,7 @@ body {
 
 .register-formulaire {
     background-color: #E9EDDB;
-    padding: 10%;
+    padding: 2%;
     margin: 5%;
     border-radius: 8px;
     height: 75%;
