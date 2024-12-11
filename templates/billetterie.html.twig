@@ -79,16 +79,20 @@
         <div class="billetterie-reservation">
             <div class="billetterie-reservation-case">
                 {% for event in events %}
-                <div style="padding-left: 5%; padding-right: 5%;">
+                <div style="padding-left: 5%; padding-right: 5%; text-align: center; margin-bottom: 2%">
                 <img src="{{ asset('uploads/images/' ~ event.image) }}" alt="Event Image" style="width: auto; height: 200px;">
-                <H2>{{event.eventName}}</H2>
-                <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%">
+                <h2>{{event.eventName}}</h2>
+                <div style="padding-left: 20%; padding-right: 20%">
+                <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%; text-align: left">
                 <p>{{ event.description }}</p>
+                </div>
                 </div>
                 <button class="billetterie-tarifs-acheter">
                 <a href="{{ path('app_reservation') }}" style="text-decoration: none; color: white">Réserver</a>
-                </button>                </div>
+                </button>
+                </div>
                 {% endfor %}
+
             </div>
         </div>
 
@@ -98,18 +102,21 @@
         
         <div class="billetterie-reservation">
             <div class="billetterie-reservation-case">
-                {% for location in locations %}
-                <div style="padding-left: 5%; padding-right: 5%;">
-                <img src="{{ asset('uploads/images/' ~ location.image) }}" alt="Event Image" style="width: auto; height: 200px;">
-                <H2>{{location.locationName}}</H2>
-                <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%">
-                <p>{{ location.description }}</p>
-                </div>
-                <button class="billetterie-tarifs-acheter">
-                <a href="{{ path('app_reservation') }}" style="text-decoration: none; color: white">Réserver</a>
-                </button>
-                </div>
-            {% endfor %}
+            {% for location in locations %}
+            <div style="padding-left: 5%; padding-right: 5%; text-align: center;">
+            <img src="{{ asset('uploads/images/' ~ location.image) }}" alt="Event Image" style="width: auto; height: 200px;">
+            <h2>{{location.locationName}}</h2>
+            <div style="padding-left: 20%; padding-right: 20%">
+            <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%; text-align: left">
+            <p>{{ location.description }}</p>
+            </div>
+            </div>
+    <button class="billetterie-tarifs-acheter">
+        <a href="{{ path('app_reservation') }}" style="text-decoration: none; color: white">Réserver</a>
+    </button>
+</div>
+{% endfor %}
+
             </div>
         </div>        
         
@@ -120,18 +127,21 @@
         <div class="billetterie-reservation">
             <div class="billetterie-reservation-case">
                 {% for equipement in equipements %}
-                <div style="padding-left: 5%; padding-right: 5%;">
+                <div style="padding-left: 5%; padding-right: 5%; text-align: center;">
                 <img src="{{ asset('uploads/images/' ~ equipement.images) }}" alt="Event Image" style="width: auto; height: 200px;">
-                <H2>{{equipement.equipementName}}</H2>
-                <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%">
+                <h2>{{equipement.equipementName}}</h2>
+                <div style="padding-left: 20%; padding-right: 20%">
+                <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%; text-align: center; text-align: left">
                 <p>{{ equipement.description }}</p>
+                </div>
                 </div>
                 <button class="billetterie-tarifs-acheter">
                 <a href="{{ path('app_reservation') }}" style="text-decoration: none; color: white">Réserver</a>
-                </button>
-                </div>
-                {% endfor %}    
+            </button>
             </div>
+            {% endfor %}
+
+        </div>
         </div>
 
 
