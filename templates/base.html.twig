@@ -5,7 +5,7 @@
 			<div class="header-navbar">
 				<ul {% if app.request.get('_route') in ['billetterie', 'profil', 'profiledit'] %} style="background-color: white; padding-top: 10px; margin: 0;" {% endif %}>
 					<li>
-						<a class="header-liens" href="{{ path('login') }}">Planning</a>
+						<a class="header-liens" href="{{ path('accueil') }}#accueil-calendrier">Planning</a>
 					</li>
 					<li>
 						<a class="header-liens" href="{{ path('billetterie') }}">Billetterie</a>
