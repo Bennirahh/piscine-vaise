@@ -43,4 +43,16 @@ class PageController extends AbstractController
     {
         return $this->render('profiledit.html.twig');
     }
+
+    #[Route('/credits', name: 'credits')]
+    public function credit(): Response
+    {
+        return $this->render('credits.html.twig');
+    }
+
+    #[Route('/rgpd', name: 'rgpd')]
+    public function rgpd(): Response
+    {
+        return $this->render('mention.html.twig');
+    }
 }
