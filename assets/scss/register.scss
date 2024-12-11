@@ -253,3 +253,12 @@ body {
 .register-form-footer-logo img {
     margin-left: 5%;
 }
+
+.register-terms{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.register-input-check{
+    left: 0px;
+}
