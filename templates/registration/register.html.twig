@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block title %}Register
+{% endblock %}
+{% block body %}
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>Register</title>
+			<link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+		</head>
+		<body class="body-login-register">
+			<div class="page-register">
+				<div class="register-centre">
+					<div class="register-titre register-titre-bloc">
+						<p class="register-titre register-titre1">Créer un compte</p>
+						<p class="register-titre register-titre2">Prêt à te surpasser ?</p>
+						<p class="register-texte">Créez votre compte et démarrez votre transformation ! Rejoignez-nous pour accéder à vos séances et révéler la meilleure version de vous-même.</p>
+					</div>
+					<div class="register-formulaire-bloc">
+						{{ form_start(registrationForm, {'attr': {'class': 'register-formulaire'}}) }}
+						<p class="register-form-titre">Création de mon compte</p>
+						<div class="register-input-1">
+							<div class="register-input-case">
+								{{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'register-form-label'}}) }}
+								{{ form_widget(registrationForm.email, {'attr': {'class': 'register-input', 'placeholder': 'Email@exemple.fr'}}) }}
+							</div>
+							<div class="register-input-case">
+								{{ form_label(registrationForm.plainPassword, 'Mot de passe', {'label_attr': {'class': 'register-form-label'}}) }}
+								{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'register-input', 'placeholder': 'Votre mot de passe'}}) }}
+							</div>
+							<div class="register-input-case">
+								{{ form_label(registrationForm.user_name, 'Prénom', {'label_attr': {'class': 'register-form-label'}}) }}
+								{{ form_widget(registrationForm.user_name, {'attr': {'class': 'register-input', 'placeholder': 'Prénom'}}) }}
+							</div>
+							<div class="register-input-case">
+								{{ form_label(registrationForm.user_firstname, 'Nom', {'label_attr': {'class': 'register-form-label'}}) }}
+								{{ form_widget(registrationForm.user_firstname, {'attr': {'class': 'register-input', 'placeholder': 'Nom'}}) }}
+							</div>
+							<div class="register-input-case">
+								{{ form_label(registrationForm.user_phone, 'Téléphone', {'label_attr': {'class': 'register-form-label'}}) }}
+								{{ form_widget(registrationForm.user_phone, {'attr': {'class': 'register-input', 'placeholder': '0x xx xx xx xx'}}) }}
+							</div>
+							<div class="register-input-case">
+								{{ form_label(registrationForm.user_birthday, 'Date de naissance', {'label_attr': {'class': 'register-form-label'}}) }}
+								{{ form_widget(registrationForm.user_birthday, {'attr': {'class': 'register-input'}}) }}
+							</div>
+						</div>
+						<div class="register-input-2">
+							<div class="">
+								{{ form_label(registrationForm.agreeTerms, 'Accepter les conditions', {'label_attr': {'class': 'register-form-label'}}) }}
+								{{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'register-input'}}) }}
+							</div>
+						</div>
+						<button type="submit" class="register-submit">Créer votre compte</button>
+						{{ form_end(registrationForm) }}
+						<div class="register-barre"></div>
+						<div class="register-form-footer">
+							<p>Vous avez déjà un compte ?</p>
+							<div></div>
+							<div class="register-form-footer-logo">
+							<a href="{{ path('login') }}">Connexion</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script src="{{ asset('js/theme.js') }}"></script>
+		</body>
+	</html>
+{% endblock %}

@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class PageController extends AbstractController
 {
@@ -13,17 +15,38 @@ class PageController extends AbstractController
     {
         return $this->render('login.html.twig');
     }
-
-    #[Route('/register', name: 'register')]
-    public function register(): Response
+    
+    #[Route('/profil', name: 'profil')]
+    public function profil(Request $request): Response
     {
-        return $this->render('register.html.twig');
+        $user = $this->getUser();
+
+        // Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
+        if (!$user) {
+            return $this->redirectToRoute('login');
+        }
+
+        return $this->render('profil.html.twig', [
+            'user' => $user,
+        ]);
+    }
+    
+    #[Route('/profiledit', name: 'profiledit')]
+    public function profiledit(): Response
+    {
+        return $this->render('profiledit.html.twig');
     }
 
-    #[Route('/billetterie', name: 'billetterie')]
-    public function billetterie(): Response
+    #[Route('/credits', name: 'credits')]
+    public function credit(): Response
     {
-        return $this->render('billetterie.html.twig');
+        return $this->render('credits.html.twig');
+    }
+
+    #[Route('/rgpd', name: 'rgpd')]
+    public function rgpd(): Response
+    {
+        return $this->render('mention.html.twig');
     }
 
     #[Route('/accueil', name: 'accueil')]

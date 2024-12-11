@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
     <body>
+    <header>
+			<div class="header-navbar">
+				<ul {% if app.request.get('_route') in ['billetterie', 'profil', 'profiledit'] %} style="background-color: white; padding-top: 10px; margin: 0;" {% endif %}>
+					<li>
+						<a class="header-liens" href="{{ path('login') }}">Planning</a>
+					</li>
+					<li>
+						<a class="header-liens" href="{{ path('billetterie') }}">Billetterie</a>
+					</li>
+					<li><img width="60%" src="../img/Logo1.png"></li>
+					<li>
+						<a class="header-liens" href="{{ path('login') }}">Contact</a>
+					</li>
+					<li>
+						<a class="header-liens" href="{{ path('login') }}">Connexion</a>
+					</li>
+				</ul>
+			</div>
+		</header>
         {% block body %}{% endblock %}
+		<footer {% if app.request.get('_route') in ['billetterie', 'profil', 'profiledit'] %} style="background-color: white; padding-top: 10px; margin: 0;" {% endif %}>
+			<div class="footer-content">
+				<div class="footer">
+					<div class="footer-case">
+						<a class="footer-lien" href="{{ path('login') }}">Contact</a>
+						<a class="footer-lien" href="{{ path('rgpd') }}">Politique de confidentialité</a>
+					</div>
+					<div class="footer-case footer-reseau">
+						<a href="https://fr-fr.facebook.com/"><img src="../img/footer-facebook.png" alt=""></a>
+						<a href="https://www.instagram.com/"><img class="footer-logos" src="../img/footer-instagram.png" alt=""></a>
+						<a href="https://www.youtube.com/"><img src="../img/footer-youtube.png" alt=""></a>
+					</div>
+					<div class="footer-case">
+						<img class="footer-logo1" src="../img/Logo1.png" alt="">
+					</div>
+				</div>
+				<p class="footer-copy">© 2024 WebPulse- Tous droits réservés</p>
+			</div>
+		</footer>
     </body>
 </html>
