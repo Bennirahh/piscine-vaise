@@ -53,7 +53,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Réservations', 'fas fa-calendar', Reservation::class);
         yield MenuItem::linkToCrud('Équipements', 'fas fa-tools', Equipement::class);
         yield MenuItem::linkToCrud('Specialité du professeurs', 'fas fa-chalkboard-teacher', Sector::class);
-        //yield MenuItem::linkToCrud('Événements', 'fas fa-calendar-alt', Event::class);
+        yield MenuItem::linkToCrud('Événements', 'fas fa-calendar-alt', Event::class);
         yield MenuItem::linkToCrud('Lieu', 'fas fa-calendar-alt', Location::class);
         yield MenuItem::linkToCrud('Role', 'fas fa-calendar-alt', Role::class);
     }
