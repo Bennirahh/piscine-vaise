@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes réservations</title>
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <style>
+        body {
+            background-image: url('{{ asset('img/background2.jpg') }}');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .profile-page {
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main class="profile-page">
+        <section class="relative py-16">
+            <div class="container mx-auto px-4">
+                <h1 class="text-4xl font-semibold leading-normal mb-6 text-center text-white">Mes réservations</h1>
+                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg">
+                    <table class="min-w-full leading-normal">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th class="py-3 px-5 border-b-2 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Utilisateur</th>
+                                <th class="py-3 px-5 border-b-2 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Catégorie</th>
+                                <th class="py-3 px-5 border-b-2 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Date</th>
+                                <th class="py-3 px-5 border-b-2 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Personnes</th>
+                                <th class="py-3 px-5 border-b-2 border-gray-300 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Prix</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for reservation in reservations %}
+                                <tr>
+                                    <td class="py-5 px-5 border-b border-gray-200">{{ reservation.users.UserName }} {{ reservation.users.UserFirstname }}</td>
+                                    <td class="py-5 px-5 border-b border-gray-200">{{ reservation.reservationCategory }}</td>
+                                    <td class="py-5 px-5 border-b border-gray-200">{{ reservation.reservationDate|date('d/m/Y H:i') }}</td>
+                                    <td class="py-5 px-5 border-b border-gray-200">{{ reservation.reservationPeaopleNumber }}</td>
+                                    <td class="py-5 px-5 border-b border-gray-200">{{ reservation.reservationPrice }}€</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5" class="py-5 px-5 border-b border-gray-200 text-center">Aucune réservation trouvée.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+{% endblock %}
