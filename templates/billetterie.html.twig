@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html.twig' %}
+{% block body %}
 
 <head>
     <meta charset="UTF-8">
@@ -10,17 +10,7 @@
 
 <body style="background-color: white;" >
 
-    {% block body %}
     <div class="page-billetterie">
-        <div class="billetterie-navbar">
-            <ul>
-                <li>Planning</li>
-                <li>Billetterie</li>
-                <li><img width="60%" src="../img/Logo1.png"></li>
-                <li>Contact</li>
-                <li>Connexion</li>
-            </ul>
-        </div>
         <div class="billetterie-titre">
             <img src="../img/billetterie-ticket.png" alt="">
             <p>Billetterie</p>
@@ -146,7 +136,6 @@
 
     <script src="{{ asset('js/theme.js') }}"></script>
 
-    {% endblock %}
 
-</html>
-</body>
+    </body>
+{% endblock %}
