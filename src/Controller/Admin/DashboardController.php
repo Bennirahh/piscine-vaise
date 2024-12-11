@@ -18,6 +18,7 @@ use App\Entity\Sector;
 use App\Entity\Event;
 use App\Entity\Location;
 use App\Entity\Role;
+use App\Entity\Contact;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -56,5 +57,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Événements', 'fas fa-calendar-alt', Event::class);
         yield MenuItem::linkToCrud('Lieu', 'fas fa-calendar-alt', Location::class);
         yield MenuItem::linkToCrud('Role', 'fas fa-calendar-alt', Role::class);
+        yield MenuItem::linkToCrud('Contact', 'fas fa-envelope',Contact::class);
     }
 }
