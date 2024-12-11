@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
 </head>
 
-<body {% if app.request.get('_route')=='billetterie' %}style="background-color: white;" {% elseif
-    app.request.get('_route') in ['login', 'register' ] %}style="background-image: url('../img/background1.jpg');" {%
-    endif %}>
+<body style="background-color: white;" >
 
     {% block body %}
     <div class="page-billetterie">
@@ -71,38 +69,78 @@
             </div>
         </div>
 
+
+        {# ICI C'EST LES EVENEMENT ( PREMIÈRE LIGNE ) #}
+        <div style="text-align: center;">
+        <H1>Evennements</H1>
+        </div>
         <div class="billetterie-reservation">
             <div class="billetterie-reservation-case">
-                <img src="../img/billetterie-basket.png" alt="">
-                <H2>Basket</H2>
-                <p>Le terrain de basket sur mesure, rien que pour vous. Chaque créneau offre un moment de jeu
-                    unique,
-                    adapté à vos besoins.</p>
-                <button class="billetterie-tarifs-acheter">Réserver</button>
-            </div>
-            <div class="billetterie-reservation-case">
-                <img src="../img/billetterie-tennis.png" alt="">
-                <H2>Tennis</H2>
-                <p>Votre court de tennis, entièrement réservé. Profitez d’un espace conçu pour un jeu sur mesure à
-                    chaque session.</p>
-                <button class="billetterie-tarifs-acheter">Réserver</button>
-            </div>
-            <div class="billetterie-reservation-case">
-                <img src="../img/billetterie-foot.png" alt="">
-                <H2>Football</H2>
-                <p>Un terrain de foot 6v6 réservé à votre équipe. Vivez une expérience de jeu dynamique et personnalisée
-                    à chaque réservation.</p>
-                <button class="billetterie-tarifs-acheter">Réserver</button>
-            </div>
-            <div class="billetterie-reservation-case">
-                <img src="../img/billetterie-boxe.png" alt="">
-                <H2>Boxe</H2>
-                <p>Un ring de boxe juste pour vous. Entraînez-vous dans un espace privé et optimisé pour chaque séance,
-                    prêt pour le combat.</p>
-                <button class="billetterie-tarifs-acheter">Réserver</button>
+                {% for event in events %}
+                <div style="padding-left: 5%; padding-right: 5%; text-align: center; margin-bottom: 2%">
+                <img src="{{ asset('uploads/images/' ~ event.image) }}" alt="Event Image" style="width: auto; height: 200px;">
+                <h2>{{event.eventName}}</h2>
+                <div style="padding-left: 20%; padding-right: 20%">
+                <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%; text-align: left">
+                <p>{{ event.description }}</p>
+                </div>
+                </div>
+                <button class="billetterie-tarifs-acheter">
+                <a href="{{ path('app_reservation') }}" style="text-decoration: none; color: white">Réserver</a>
+                </button>
+                </div>
+                {% endfor %}
+
             </div>
         </div>
-    </div>
+
+        <div style="text-align: center;">
+        <H1>Lieux</H1>
+        </div>
+        
+        <div class="billetterie-reservation">
+            <div class="billetterie-reservation-case">
+            {% for location in locations %}
+            <div style="padding-left: 5%; padding-right: 5%; text-align: center;">
+            <img src="{{ asset('uploads/images/' ~ location.image) }}" alt="Event Image" style="width: auto; height: 200px;">
+            <h2>{{location.locationName}}</h2>
+            <div style="padding-left: 20%; padding-right: 20%">
+            <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%; text-align: left">
+            <p>{{ location.description }}</p>
+            </div>
+            </div>
+    <button class="billetterie-tarifs-acheter">
+        <a href="{{ path('app_reservation') }}" style="text-decoration: none; color: white">Réserver</a>
+    </button>
+</div>
+{% endfor %}
+
+            </div>
+        </div>        
+        
+        <div style="text-align: center;">
+        <H1>Equipements</H1>
+        </div>
+
+        <div class="billetterie-reservation">
+            <div class="billetterie-reservation-case">
+                {% for equipement in equipements %}
+                <div style="padding-left: 5%; padding-right: 5%; text-align: center;">
+                <img src="{{ asset('uploads/images/' ~ equipement.images) }}" alt="Event Image" style="width: auto; height: 200px;">
+                <h2>{{equipement.equipementName}}</h2>
+                <div style="padding-left: 20%; padding-right: 20%">
+                <div style="border-color: red #D5DD3C; border-width: 2px; border-left-style: solid; padding-left: 2%; text-align: center; text-align: left">
+                <p>{{ equipement.description }}</p>
+                </div>
+                </div>
+                <button class="billetterie-tarifs-acheter">
+                <a href="{{ path('app_reservation') }}" style="text-decoration: none; color: white">Réserver</a>
+            </button>
+            </div>
+            {% endfor %}
+
+        </div>
+        </div>
 
 
 
@@ -111,3 +149,4 @@
     {% endblock %}
 
 </html>
+</body>

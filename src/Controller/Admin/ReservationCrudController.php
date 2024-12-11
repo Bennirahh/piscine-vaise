@@ -14,6 +14,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+
 
 
 
@@ -28,9 +30,10 @@ class ReservationCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield AssociationField::new('users')
-        ->setLabel('Utilisateur')
-        ->setRequired(true)
-        ->setFormTypeOption('choice_label', 'UserFirstname'); 
+            ->setLabel('Utilisateur')
+            ->setFormTypeOption('choice_label', function($user) {
+                return $user->getFirstname(); // Ici, on affiche le prénom de l'utilisateur
+            });
 
         yield AssociationField::new('event')
         ->setLabel('Evenement')
