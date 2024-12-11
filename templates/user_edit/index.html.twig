@@ -54,13 +54,14 @@
             <div class="grid">
               {{ form_start(form) }}
               <div class="grid grid-cols-2 gap-4 mb-2 mt-10 text-blueGray-600 justify-center px-[25%]">
-                <div class="col-span-1">
-                  <img src="../img/user.png" class="mr-2" alt="user logo">
-                  {{ form_row(form.UserFirstname, { 'attr': { 'class': 'rounded-lg border-[#B6BAAC] border-2 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 block w-full' } }) }}
-                </div>
+                
                 <div class="col-span-1">
                   <img src="../img/user.png" class="mr-2" alt="user logo">
                   {{ form_row(form.UserName, { 'attr': { 'class': 'rounded-lg border-[#B6BAAC] border-2 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 block w-full' } }) }}
+                </div>
+                <div class="col-span-1">
+                  <img src="../img/user.png" class="mr-2" alt="user logo">
+                  {{ form_row(form.UserFirstname, { 'attr': { 'class': 'rounded-lg border-[#B6BAAC] border-2 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 block w-full' } }) }}
                 </div>
               </div>
               <div class="grid grid-cols-2 gap-4 mb-2 mt-10 text-blueGray-600 justify-center px-[25%]">
