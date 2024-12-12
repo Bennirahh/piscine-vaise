@@ -25,7 +25,7 @@
 																	                            N'attendez plus, réservez votre ticket dès aujourd'hui et faites le premier pas vers une
 																	                            version plus forte et plus épanouie de vous-même !</p>
 						</div>
-						<a href="#">GO-tickets</a>
+						<a href="{{ path('billetterie') }}">GO-tickets</a>
 					</div>
 				</div>
 			</div>
@@ -41,65 +41,26 @@
 													                    Rejoignez-nous et faites battre votre rythme au Pulse Center !</p>
 				</div>
 			</div>
-			<div class="presentation">
-				<div class="presentation-case">
-					<p>Venez explorer le tennis comme jamais auparavant au Pulse Center, le lieu idéal pour combiner
-													                    performance et amusement ! Que vous souhaitiez perfectionner votre jeu ou passer du bon temps avec
-													                    des amis, nous avons ce qu'il vous faut. Inscrivez-vous à nos cours de tennis, dirigés par des
-													                    entraîneurs experts, et progressez rapidement, quel que soit votre niveau. Vous voulez jouer
-													                    librement ?</p>
-					<div class="accueil-presentation-images1"><img src="../img/accueil-image5.png" alt=""></div>
-					<p>Réservez un court de tennis pour des parties avec vos proches. Pas d'équipement ? Aucun souci ! Nous
-													                    proposons également la location de raquettes et de balles, afin que vous soyez toujours prêt à
-													                    jouer. Ne manquez pas cette chance de vous dépasser dans une ambiance conviviale et dynamique.
-													                    Réservez votre place dès maintenant et vivez une expérience tennis inoubliable au Pulse Center, où
-													                    chaque moment sur le court compte !</p>
-				</div>
-				<div class="presentation-case">
-					<p>Entrez dans le monde captivant de la boxe au Pulse Center, un espace conçu pour marier force,
-													                    technique et esprit d’équipe ! Que vous soyez un débutant ou un combattant aguerri, nos séances de
-													                    boxe, animées par des professionnels qualifiés, vous aideront à perfectionner votre style et à
-													                    améliorer votre condition physique. Envie de vous défouler sur le ring ? Réservez un espace de boxe
-													                    pour vous entraîner à votre propre rythme ou avec des amis pour des séances intensives.
-					</p>
-					<div class="accueil-presentation-images2"><img src="../img/accueil-image2.png" alt=""></div>
-					<p>Pas d'équipement ? Pas de problème ! Nous avons tout ce qu'il vous faut à la location. Rejoignez
-													                    notre communauté passionnée et découvrez les nombreux avantages de la boxe, tant sur le plan
-													                    physique que mental. Achetez votre ticket dès aujourd'hui et préparez-vous à vivre des moments
-													                    inoubliables au Pulse Center, où chaque coup vous rapproche de vos aspirations !</p>
-				</div>
-				<div class="presentation-case">
-					<p>Venez ressentir l’énergie du basketball au Pulse Center, votre destination de choix pour le sport et
-													                    l’esprit d’équipe ! Que vous soyez un novice enthousiaste ou un joueur expérimenté, nos cours de
-													                    basket, encadrés par des entraîneurs dévoués, sont conçus pour vous aider à peaufiner vos
-													                    compétences et à développer votre jeu collectif. Préférez-vous jouer à votre rythme ?</p>
-					<div class="accueil-presentation-images3"><img src="../img/accueil-image3.png" alt=""></div>
-					<p>
-						Réservez un terrain pour des matchs palpitants avec vos amis ou votre famille. Vous n’avez pas de
-													                    matériel ? Aucun souci ! Nous proposons la location de tout le nécessaire pour que vous puissiez
-													                    jouer en toute tranquillité. Rejoignez notre communauté de passionnés et explorez les bienfaits du
-													                    basketball sur le corps et l’esprit. Achetez votre ticket dès maintenant et préparez-vous à vivre
-													                    des moments mémorables au Pulse Center, où chaque dribble vous rapproche de vos objectifs !</p>
-				</div>
-				<div class="presentation-case">
-					<p>Venez vivre l'adrénaline du football 6 vs 6 au Pulse Center, votre destination idéale pour le sport
-													                    et le fun ! Que vous soyez un joueur passionné ou simplement à la recherche d'une activité
-													                    conviviale, nos matchs de foot offrent une expérience dynamique et pleine d'énergie. Rejoignez nos
-													                    parties organisées pour défier d'autres équipes et améliorer vos compétences, ou réservez simplement
-													                    un terrain pour jouer entre amis.</p>
-					<div class="accueil-presentation-images4"><img src="../img/accueil-image4.png" alt=""></div>
-					<p>
-						Vous n'avez pas le matériel nécessaire ? Pas de problème ! Nous proposons également la location de
-													                    ballons et d'équipements, vous permettant de vous concentrer sur le jeu sans souci.Ne manquez pas
-													                    l’occasion de faire du sport tout en vous amusant et en vous socialisant. Achetez votre ticket dès
-													                    maintenant et préparez-vous à marquer des buts et à vivre des moments inoubliables au Pulse Center,
-													                    où chaque match vous rapproche de la victoire et de nouveaux amis !</p>
-				</div>
-			</div>
+			<div><div class="accueil-evennements">
+                        <div class="accueil-evennements-cases-titre">
+                            <H2>Événnements à venir</H2>
+                            <p>Ne ratez pas l'heure.</p>
+                            <div class="accueil-evennements-cases">
+                                <p class="accueil-evennements-cases-date">10 Janvier 10h à 12h</p>
+                                <p class="accueil-evennements-cases-nom">Cours de Football</p>
+                                <p class="accueil-evennements-cases-description">Participez bla bla bla</p>
+                            </div>
+                        </div>
+                        <section class="relative py-8 sm:p-8" id="accueil-calendrier">
+                            <iframe src="
+                                https://calendar.google.com/calendar/embed?src=pulsecenter69%40gmail.com&ctz=UTC" class="w-full h-[600px] border-0 rounded-lg" frameborder="0" scrolling="no"></iframe>
+                        </section>
+                    </div></div>
+
 
 					<div class="accueil-infos">
 					{{ form_start(form) }}
-								<div class="accueil-contact">
+								<div class="accueil-contact" id="contactSection">
 									<H1>Contactez-nous</H1>
 									<p>Nous adoptons une démarche itérative et collaborative afin de valider vos hypothèses rapidement et de
 																	                    répondre aux attentes de votre audience de manière proactive et continue.</p>
