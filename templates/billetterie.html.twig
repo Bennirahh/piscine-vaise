@@ -9,14 +9,17 @@
 </head>
 
 <body style="background-color: white;" >
-        {% for ticket in tickets %}
     <div class="page-billetterie">
         <div class="billetterie-titre">
             <img src="../img/billetterie-ticket.png" alt="">
             <p>Billetterie</p>
         </div>
+
         <div class="billetterie-tarifs">
+                        {% for ticket in tickets %}
+
             <div class="billetterie-tarifs-case1">
+            
                 <div class="billetterie-case1">
                     <p class="billetterie-titre-billet">{{ ticket.firstLabel }}</p>
                     <p class="billetterie-tarifs-type">{{ticket.categorie}}</p>
@@ -24,12 +27,13 @@
                     <span class="billetterie-tarifs-prix1">{{ticket.prix}}</span><span class="billetterie-tarifs-prix2">€</span>
                     <br>
                     <a href="{{ path('app_reservation') }}">
-<button class="billetterie-tarifs-acheter">Acheter</button></a>
+                        <button class="billetterie-tarifs-acheter">Acheter</button></a>
                     <p class="billet-titre-bas">{{ticket.last}}</p>
                 </div>
             </div>
+            {% endfor %}
         </div>
-{% endfor %}
+
 
         {# ICI C'EST LES EVENEMENT ( PREMIÈRE LIGNE ) #}
         <div style="text-align: center;">
