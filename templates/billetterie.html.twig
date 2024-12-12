@@ -23,7 +23,8 @@
                     <p>{{ticket.age}}</p>
                     <span class="billetterie-tarifs-prix1">{{ticket.prix}}</span><span class="billetterie-tarifs-prix2">€</span>
                     <br>
-                    <button class="billetterie-tarifs-acheter">Acheter</button>
+                    <a href="{{ path('app_reservation') }}">
+<button class="billetterie-tarifs-acheter">Acheter</button></a>
                     <p class="billet-titre-bas">{{ticket.last}}</p>
                 </div>
             </div>
