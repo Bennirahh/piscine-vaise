@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField; 
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField; 
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField; 
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -31,7 +32,7 @@ class EventCrudController extends AbstractCrudController
         yield TextField::new('eventName', 'Nom');
         yield IntegerField::new('eventCapacity', 'Capacity');
         yield IntegerField::new('eventPrice', 'Price');
-        yield DateField::new('eventDate', 'Date de evenement');
+        yield DateTimeField::new('eventDate', 'Date de evenement');
         yield ImageField::new('image', 'Image')
         ->setBasePath('uploads/images') // Affiche les images dans 'public/uploads/images'
         ->setUploadDir('public/uploads/images') //

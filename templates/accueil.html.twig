@@ -43,13 +43,19 @@
 			</div>
 			<div><div class="accueil-evennements">
                         <div class="accueil-evennements-cases-titre">
-                            <H2>Événnements à venir</H2>
+
+                            <H2>Événements à venir</H2>
                             <p>Ne ratez pas l'heure.</p>
+							{% for event in events%}
+<a href="{{ path('app_reservation') }}" id="monLien">
+
                             <div class="accueil-evennements-cases">
-                                <p class="accueil-evennements-cases-date">10 Janvier 10h à 12h</p>
-                                <p class="accueil-evennements-cases-nom">Cours de Football</p>
-                                <p class="accueil-evennements-cases-description">Participez bla bla bla</p>
+                                <p class="accueil-evennements-cases-date">{{event.eventDate|date('Y-m-d H:i:s') }}</p>
+                                <p class="accueil-evennements-cases-nom">{{event.eventName}}</p>
+                                <p class="accueil-evennements-cases-description">{{event.eventCapacity}} Personnes Max</p>
                             </div>
+							</a>
+							{% endfor %}
                         </div>
                         <section class="relative py-8 sm:p-8" id="accueil-calendrier">
                             <iframe src="
@@ -57,7 +63,7 @@
                         </section>
                     </div></div>
 
-
+			
 					<div class="accueil-infos">
 					{{ form_start(form) }}
 								<div class="accueil-contact" id="contactSection">

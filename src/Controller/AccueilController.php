@@ -9,12 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use App\Entity\Event;
 class AccueilController extends AbstractController
 {
     #[Route('/accueil', name: 'app_accueil')]
     public function contact(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $events = $entityManager->getRepository(Event::class)->findAll();
+        
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
 
@@ -33,6 +35,8 @@ class AccueilController extends AbstractController
 
         return $this->render('accueil.html.twig', [
             'form' => $form->createView(),
+            'events'=>$events,
+
         ]);
     }
 }
