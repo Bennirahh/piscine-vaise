@@ -14,7 +14,9 @@
 				<div class="register-centre">
 					<div class="register-titre register-titre-bloc">
 						<p class="register-titre register-titre1">Créer un compte</p>
-						<p class="register-titre register-titre2">Prêt à te surpasser ?</p>
+						<p class="register-titre register-titre2">Prêt à te</p>
+						<br>
+						<p class="register-titre register-titre2">surpasser ?</p>
 						<p class="register-texte">Créez votre compte et démarrez votre transformation ! Rejoignez-nous pour accéder à vos séances et révéler la meilleure version de vous-même.</p>
 					</div>
 					<div class="register-formulaire-bloc">
@@ -57,15 +59,16 @@
 							</div>
 						</div>
 						<button type="submit" class="register-submit">Créer votre compte</button>
-						{{ form_end(registrationForm) }}
 						<div class="register-barre"></div>
 						<div class="register-form-footer">
 							<p>Vous avez déjà un compte ?</p>
 							<div></div>
 							<div class="register-form-footer-logo">
 							<a href="{{ path('login') }}">Connexion</a>
+							<img src="../img/register-submit.png" alt="">
 							</div>
 						</div>
+						{{ form_end(registrationForm) }}
 					</div>
 				</div>
 			</div>
