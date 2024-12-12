@@ -171,6 +171,7 @@ body {
 .register-formulaire {
     background-color: #E9EDDB;
     padding: 2%;
+    padding-bottom: 5%;
     margin: 5%;
     border-radius: 8px;
     height: 75%;
@@ -261,4 +262,9 @@ body {
 
 .register-input-check{
     left: 0px;
+}
+
+.register-case{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }

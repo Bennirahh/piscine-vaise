@@ -72,10 +72,14 @@
                         {{ form_row(form.UserPhone, { attr: { class: 'rounded-lg border-[#B6BAAC] border-2 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 block w-full' } }) }}
                       </div>
                     </div>
-                    <div class="mb-2 mt-10 text-blueGray-600 mx-auto px-[25%] flex items-center">
-                      <img src="../img/email.png" class="mr-2" alt="email logo" />
-                      {{ form_row(form.email, { attr: { class: 'rounded-lg border-[#B6BAAC] border-2 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 block w-full' } }) }}
+                  <div class="grid grid-cols-2 gap-4 mb-2 mt-10 text-blueGray-600 justify-center px-[25%]">
+                  <div class="col-span-2 flex items-center w-full">
+                  <img src="../img/email.png" class="mr-2" alt="email logo" />
+                  <div class="w-full">
+                  {{ form_row(form.email, { attr: { class: 'rounded-lg border-[#B6BAAC] border-2 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 block w-full' } }) }}
                     </div>
+                  </div>
+                </div>
 
                     <div class="text-center">
                       <button class="active:bg-pink-600 text-white font-bold hover:shadow-md shadow text-xs p-3 rounded outline-none focus:outline-none sm:mr-2 m-5 ease-linear transition-all duration-150" style="background-color: #828F23;" type="submit">Sauvegarder</button>

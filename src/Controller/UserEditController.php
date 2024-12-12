@@ -1,7 +1,5 @@
 <?php 
 
-// src/Controller/UserEditController.php
-
 namespace App\Controller;
 
 use App\Entity\Users;
@@ -51,7 +49,7 @@ class UserEditController extends AbstractController
             $this->addFlash('success', 'Vos informations ont été mises à jour avec succès.');
 
             // Rediriger après la mise à jour
-            return $this->redirectToRoute('app_user_edit');
+            return $this->redirectToRoute('profil'); // Changez cette ligne pour rediriger vers /profil
         }
 
         // Afficher le formulaire d'édition
