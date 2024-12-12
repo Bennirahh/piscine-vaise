@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <body>
-    <header>
+	<body>
+		<header>
 			<div class="header-navbar">
 				<ul {% if app.request.get('_route') in ['billetterie', 'profil', 'profiledit'] %} style="background-color: white; padding-top: 10px; margin: 0;" {% endif %}>
 					<li>
-						<a class="header-liens" href="{{ path('login') }}">Planning</a>
+						<a class="header-liens" href="{{ path('accueil') }}">Accueil</a>
 					</li>
 					<li>
 						<a class="header-liens" href="{{ path('billetterie') }}">Billetterie</a>
 					</li>
-					<li><img width="60%" src="../img/Logo1.png"></li>
 					<li>
-						<a class="header-liens" href="{{ path('login') }}">Contact</a>
+						<a href="{{ path('accueil') }}">
+							<img width="60%" src="../img/Logo1.png" alt="Logo">
+						</a>
 					</li>
+					<li>
+						<a class="header-liens" href="{{ path('accueil') }}#contactSection">Contact</a>
+					</li>
+
 					<li>
 						<a class="header-liens" href="{{ path('login') }}">Connexion</a>
 					</li>
 				</ul>
 			</div>
 		</header>
-        {% block body %}{% endblock %}
+		{% block body %}{% endblock %}
 		<footer {% if app.request.get('_route') in ['billetterie', 'profil', 'profiledit'] %} style="background-color: white; padding-top: 10px; margin: 0;" {% endif %}>
 			<div class="footer-content">
 				<div class="footer">
@@ -40,5 +45,5 @@
 				<p class="footer-copy">© 2024 WebPulse- Tous droits réservés</p>
 			</div>
 		</footer>
-    </body>
+	</body>
 </html>

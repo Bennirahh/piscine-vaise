@@ -9,8 +9,9 @@
 </head>
 
 <body style="background-color: white;" >
-
+        {% for ticket in tickets %}
     <div class="page-billetterie">
+    
         <div class="billetterie-titre">
             <img src="../img/billetterie-ticket.png" alt="">
             <p>Billetterie</p>
@@ -18,47 +19,17 @@
         <div class="billetterie-tarifs">
             <div class="billetterie-tarifs-case1">
                 <div class="billetterie-case1">
-                    <p class="billetterie-titre-billet">Billet standart</p>
-                    <p class="billetterie-tarifs-type">Enfant</p>
-                    <p>Age 3-17 ans</p>
-                    <span class="billetterie-tarifs-prix1">4</span><span class="billetterie-tarifs-prix2">.99 €</span>
+                    <p class="billetterie-titre-billet">{{ ticket.firstLabel }}</p>
+                    <p class="billetterie-tarifs-type">{{ticket.categorie}}</p>
+                    <p>{{ticket.age}}</p>
+                    <span class="billetterie-tarifs-prix1">{{ticket.prix}}</span><span class="billetterie-tarifs-prix2">€</span>
                     <br>
                     <button class="billetterie-tarifs-acheter">Acheter</button>
-                    <p class="billet-titre-bas">Les enfants de 2 ans et moins sont GRATUITS</p>
-                </div>
-            </div>
-            <div class="billetterie-tarifs-case2">
-                <div class="billetterie-case2">
-                    <p class="billetterie-titre-billet">Billet standart</p>
-                    <p class="billetterie-tarifs-type">Adulte</p>
-                    <p>Age 18-59 ans</p>
-                    <span class="billetterie-tarifs-prix1">9</span><span class="billetterie-tarifs-prix2">.99 €</span>
-                    <br>
-                    <button class="billetterie-tarifs-acheter">Acheter</button>
-                </div>
-            </div>
-            <div class="billetterie-tarifs-case3">
-                <div class="billetterie-case3">
-                    <p class="billetterie-titre-billet">Billet standart</p>
-                    <p class="billetterie-tarifs-type">Senior</p>
-                    <p>Age 18-59 ans</p>
-                    <span class="billetterie-tarifs-prix1">6</span><span class="billetterie-tarifs-prix2">.99 €</span>
-                    <br>
-                    <button class="billetterie-tarifs-acheter">Acheter</button>
-                </div>
-            </div>
-            <div class="billetterie-tarifs-case4">
-                <div class="billetterie-case4">
-                    <p class="billetterie-titre-billet">Abonnement</p>
-                    <p class="billetterie-tarifs-type">Membres</p>
-                    <p>Age 60 ans +</p>
-                    <span class="billetterie-tarifs-prix1">99</span><span class="billetterie-tarifs-prix2">.99 €</span>
-                    <br>
-                    <button class="billetterie-tarifs-acheter">Acheter</button>
+                    <p class="billet-titre-bas">{{ticket.last}}</p>
                 </div>
             </div>
         </div>
-
+{% endfor %}
 
         {# ICI C'EST LES EVENEMENT ( PREMIÈRE LIGNE ) #}
         <div style="text-align: center;">
