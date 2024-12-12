@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html>
-	<body>
-		<header>
-			<div class="header-navbar">
-				<ul {% if app.request.get('_route') in ['billetterie', 'profil', 'profiledit'] %} style="background-color: white; padding-top: 10px; margin: 0;" {% endif %}>
-					<li>
-						<a class="header-liens" href="{{ path('accueil') }}#accueil-calendrier">Planning</a>
-					</li>
-					<li>
-						<a class="header-liens" href="{{ path('billetterie') }}">Billetterie</a>
-					</li>
-					<li>
-					<a class="footer-lien" href="{{ path('accueil') }}">
-					<img width="60%" class="header-logo1" src="../img/Logo1.png" alt="">
-					</a>
-					</li>
-					<li>
-						<a class="header-liens" href="{{ path('accueil') }}#accueil-contact">Contact</a>
-					</li>
-					<li>
-						<a class="header-liens" href="{{ path('accueil') }}#contactSection">Contact</a>
-					</li>
-
-					<li>
-						<a class="header-liens" href="{{ path('login') }}">Connexion</a>
-					</li>
-				</ul>
-			</div>
-		</header>
-		{% block body %}{% endblock %}
-		<footer {% if app.request.get('_route') in ['billetterie', 'profil', 'profiledit'] %} style="background-color: white; padding-top: 10px; margin: 0;" {% endif %}>
-			<div class="footer-content">
-				<div class="footer">
-					<div class="footer-case">
-					<li>
+    <body>
+        <header>
+            <div class="header-navbar">
+                <ul {% if app.request.get('_route') in ['billetterie', 'profil', 'profiledit'] %} style="background-color: white; padding-top: 10px; margin: 0;" {% endif %}>
+                    <li>
+                        <a class="header-lien" href="{{ path('accueil') }}">Accueil</a>
                     </li>
-						<a class="footer-lien" href="{{ path('accueil') }}#accueil-contact">Contact</a>
-						<a class="footer-lien" href="{{ path('rgpd') }}">Politique de confidentialité</a>
-						<a class="footer-lien" href="{{ path('credits') }}">Crédits</a>
-					</div>
-					<div class="footer-case footer-reseau">
-						<a href="https://fr-fr.facebook.com/"><img src="../img/footer-facebook.png" alt=""></a>
-						<a href="https://www.instagram.com/"><img class="footer-logos" src="../img/footer-instagram.png" alt=""></a>
-						<a href="https://www.youtube.com/"><img src="../img/footer-youtube.png" alt=""></a>
-					</div>
-					<div class="footer-case">
-						<a class="footer-lien" href="{{ path('accueil') }}">
-						<img class="footer-logo1" src="../img/Logo1.png" alt="">
-						</a>
-					</div>
-				</div>
-				<p class="footer-copy">© 2024 WebPulse- Tous droits réservés</p>
-			</div>
-		</footer>
-	</body>
+                    <li>
+                        <a class="header-liens" href="{{ path('billetterie') }}">Billetterie</a>
+                    </li>
+                    <li>
+                        <a class="footer-lien" href="{{ path('accueil') }}">
+                            <img width="60%" class="header-logo1" src="../img/Logo1.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="header-liens" href="{{ path('accueil') }}#accueil-contact">Contact</a>
+                    </li>
+                    <li>
+                        {% if app.user %}
+                            <a class="header-liens" href="{{ path('profil') }}">Profil</a>
+                        {% else %}
+                            <a class="header-liens" href="{{ path('login') }}">Connexion</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </header>
+        {% block body %}{% endblock %}
+        <footer {% if app.request.get('_route') in ['billetterie', 'profil', 'profiledit'] %} style="background-color: white; padding-top: 10px; margin: 0;" {% endif %}>
+            <div class="footer-content">
+                <div class="footer">
+                    <div class="footer-case">
+                        <a class="footer-lien" href="{{ path('accueil') }}">Accueil</a>
+                        <a class="footer-lien" href="{{ path('rgpd') }}">Politique de confidentialité</a>
+                        <a class="footer-lien" href="{{ path('credits') }}">Crédits</a>
+                    </div>
+                    <div class="footer-case footer-reseau">
+                        <a href="https://fr-fr.facebook.com/"><img src="../img/footer-facebook.png" alt=""></a>
+                        <a href="https://www.instagram.com/"><img class="footer-logos" src="../img/footer-instagram.png" alt=""></a>
+                        <a href="https://www.youtube.com/"><img src="../img/footer-youtube.png" alt=""></a>
+                    </div>
+                    <div class="footer-case">
+                        <a class="footer-lien" href="{{ path('accueil') }}">
+                            <img class="footer-logo1" src="../img/Logo1.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <p class="footer-copy">© 2024 WebPulse- Tous droits réservés</p>
+            </div>
+        </footer>
+    </body>
 </html>
